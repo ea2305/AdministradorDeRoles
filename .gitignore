@@ -1,0 +1,17 @@
+#Modulos de node
+node_modules/
+
+#Archivo de configuracion
+build.xml
+build__.xml
+
+#Equemas de construccion
+esquema.sql
+
+#Funciones de configuracion
+serve.sh
+stop.sh
+
+#Carpetas de construccion
+dist/
+
