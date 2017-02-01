@@ -3,7 +3,6 @@ node_modules/
 
 #Archivo de configuracion
 build.xml
-build__.xml
 
 #Equemas de construccion
 esquema.sql
