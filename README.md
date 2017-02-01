@@ -2,7 +2,7 @@
 
 Implementación básica de struct para aplicación web para el control de roles de usuario
 
-#Configuraciones y requisitos
+## Configuraciones y requisitos
 
 * Tomcat 7.0
 * Java SE
@@ -10,7 +10,7 @@ Implementación básica de struct para aplicación web para el control de roles 
 * Hibernate
 * ANT 1.8 
 
-#Instrucciones básicas
+## Instrucciones básicas
 * Limpiar proyecto
 ```
 ant clean
