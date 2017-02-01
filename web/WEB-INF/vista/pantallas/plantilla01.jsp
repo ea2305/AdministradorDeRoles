@@ -17,6 +17,7 @@
 <!-- Inicio de HTML -->
 <html>
     <head>
+    
         <title>
             Administrador de Roles - UPCHIAPAS
         </title>
@@ -33,6 +34,7 @@
     </head>
 	
     <body>
+
         <!-- Cambio de maquetacion tipo tabla por divs -->
         <table class="marco" cellpadding="0">
             <tr>

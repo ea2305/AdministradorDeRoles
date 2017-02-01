@@ -16,6 +16,7 @@
 	text-decoration:underline;
   }
 </style>
+
 <script language="javascript" type="text/javascript">
 <!--
   function EliminarRol(strRolName){
@@ -23,24 +24,29 @@
   }
 -->
 </script>
+
     <br>
     <font size='5'><fmt:message key="formaListadoRoles.titulo" /></font>
     <table cellpadding="0" cellspacing="0" width="60%" border="0">
+
         <tr>
             <td colspan="4" style="padding-top:25px; padding-bottom:25px;">
                 <a href="solicitarRegistroRol.do" class="HipervinculoAdmon">Agregar nuevo rol...</a>
             </td>
         </tr>
+
         <tr>
             <td colspan="4">
                <html:errors />
             </td>
         </tr>
+
         <tr bgcolor="#CCCCCC">
          <td><b><fmt:message key="formaListadoRoles.etiqueta.nombre" /></b></td>
          <td style="border-right-style:solid; border-left-style:solid; border-width:1px; border-color:#000000;"><b><fmt:message key="formaListadoRoles.etiqueta.descripcion" /></b></td>
          <td colspan="2"><b><fmt:message key="formaListadoRoles.etiqueta.administracion" /></b></td>
         </tr>
+        
         <c:forEach var="rol" items="${formaListadoRoles.roles}">
             <tr>
                 <td align="left" width="20%"><c:out value="${rol.nombre}"/></td>

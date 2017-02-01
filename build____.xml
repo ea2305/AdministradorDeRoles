@@ -1,11 +1,9 @@
-﻿<!--
+﻿<!--    
+
     build.xml
-    Autor: Gonzalo Osuna Millán
-    Fecha: Octubre, 2004
+    Autor: 
 
-    Universidad Autónoma de Guadalajara.
-
-    Script para la construcción de aplicaciones web
+    Script para la construccion de aplicaciones web
     basadas en el servidor Tomcat e Hibernate.
 
     This build script assumes that the source code of your web application
@@ -34,7 +32,7 @@
     set to the current working directory.
 -->
 
-<project name="scec" default="build" basedir=".">
+<project name="USJ" default="build" basedir=".">
 
 
 <!-- ===================== Property Definitions ====================== -->
@@ -105,8 +103,8 @@
                          commands via the "/manager" web application)
 -->
 
-    <property name="app.name"        value="scec"/>
-    <property name="app.version"     value="0.1"/>
+    <property name="app.name"        value="VGECGRAC"/>
+    <property name="app.version"     value="0.3"/>
     <property name="app.path"        value="/${app.name}"/>
 
     <property name="src.home"        value="${basedir}/src"/>
@@ -118,15 +116,24 @@
     <property name="dist.home"       value="${basedir}/dist"/>
     <property name="test.out.dir"    value="${basedir}/testout"/>
 
-    <property name="catalina.home"    value="C:\Archivos de programa\Apache Software Foundation\Tomcat 5.0"/>
-    <property name="manager.url"      value="http://localhost:8080/manager"/>
-    <property name="manager.username" value="admin"/>
-    <property name="manager.password" value="admin"/>
+    <property   name="catalina.home"    
+                value="C:/tu_ruta_de_tomcat"/>
+    <property name="manager.url"      value="http://127.0.0.1:8080/manager/text"/>
+    <property name="manager.username" value="tu_usuario"/>
+    <property name="manager.password" value="tu_contraseña"/>
 
 
 
 <!-- ================== Custom Ant Task Definitions ================== -->
 <!--
+<fileset dir="${catalina.home}/lib">
+    <include name="catalina-ant.jar"/>
+    <include name="tomcat-coyote.jar"/>
+    <include name="tomcat-util.jar"/>
+  </fileset>
+  <fileset dir="${catalina.home}/bin">
+    <include name="tomcat-juli.jar"/>
+  </fileset>
     These properties define custom tasks for the Ant build tool that
     interact with the "/manager" web application installed with Tomcat 4.
     Before they can be successfully utilized, you must perform the
@@ -143,13 +150,34 @@
     For more information about the Manager web application, and the
     functionality of these tasks, see
     <http://localhost:8080/tomcat-docs/manager-howto.html>.
+    
+    <fileset dir="${catalina.home}/lib">
+        <include name="catalina-ant.jar"/>
+        <include name="tomcat-coyote.jar"/>
+        <include name="tomcat-util.jar"/>
+    </fileset>
+    <fileset dir="${catalina.home}/bin">
+        <include name="tomcat-juli.jar"/>
+    </fileset>  
+    <pathelement 
+    location="${catalina.home}/lib/catalina-ant.jar" />
 -->
+    <path id="tomcat.ant.classpath">
+        <pathelement location="${catalina.home}/lib/catalina-ant.jar" />
+        <!-- Configuracion agregada -->
+        <pathelement location="${catalina.home}/lib/tomcat-coyote.jar" />
+        <pathelement location="${catalina.home}/lib/tomcat-util.jar" />
+        <pathelement location="${catalina.home}/bin/tomcat-juli.jar" />
+    </path>
 
-    <taskdef name="install" classname="org.apache.catalina.ant.InstallTask"/>
-    <taskdef name="list"    classname="org.apache.catalina.ant.ListTask"/>
-    <taskdef name="reload"  classname="org.apache.catalina.ant.ReloadTask"/>
-    <taskdef name="remove"  classname="org.apache.catalina.ant.RemoveTask"/>
-
+    <taskdef name="install" classname="org.apache.catalina.ant.DeployTask"
+        classpathref="tomcat.ant.classpath" />
+    <taskdef name="list"    classname="org.apache.catalina.ant.ListTask"
+        classpathref="tomcat.ant.classpath" />
+    <taskdef name="reload"  classname="org.apache.catalina.ant.ReloadTask"
+        classpathref="tomcat.ant.classpath" />
+    <taskdef name="remove"  classname="org.apache.catalina.ant.UndeployTask"
+        classpathref="tomcat.ant.classpath" />
 
 <!--  ==================== Compilation Control Options =============== -->
 <!--
@@ -212,29 +240,37 @@
             <include name="*.jar"/>
         </fileset>
 
-
         <!-- 
             Incluye todos los elementos que Tomcat expone a 
             sus aplicaciones 
         -->
+
+        <fileset dir="${catalina.home}/lib">
+            <include name="*.jar"/>
+        </fileset>
+
+        <fileset dir="${catalina.home}/bin">
+            <include name="tomcat-juli.jar"/>
+        </fileset>
+        <!-- 
+            Tomcat bilbitecas dependiendo de la version, los directorios
+        
         <pathelement location="${catalina.home}/common/classes"/>
 
         <fileset dir="${catalina.home}/common/endorsed">
             <include name="*.jar"/>
         </fileset>
 
-        <fileset dir="${catalina.home}/common/lib">
-            <include name="*.jar"/>
-        </fileset>
 
         <pathelement location="${catalina.home}/shared/classes"/>
 
         <fileset dir="${catalina.home}/shared/lib">
             <include name="*.jar"/>
         </fileset>
-
+        -->
+        
         <!-- 
-            Incluye todas las clases generadas del aplicación 
+            Incluye todas las clases generadas del aplicacion 
         -->
         <pathelement location="${classes.home}"/>
 
@@ -329,11 +365,13 @@
 
         <!-- Compile Java classes as necessary -->
         <mkdir    dir="${build.home}/WEB-INF/classes"/>
-        <javac srcdir="${src.home}"
+        <javac  srcdir="${src.home}"
+                encoding="ISO-8859-1"
                 destdir="${build.home}/WEB-INF/classes"
                 debug="${compile.debug}"
                 deprecation="${compile.deprecation}"
                 optimize="${compile.optimize}">
+                
             <classpath refid="compile.classpath"/>
         </javac>
 
@@ -357,11 +395,11 @@
             description="Create Javadoc API documentation">
 
         <mkdir          dir="${docs.home}/api"/>
-        <javadoc sourcepath="${src.home}"
+        <!--<javadoc sourcepath="${src.home}"
                 destdir="${docs.home}/api"
                 packagenames="*">
             <classpath refid="compile.classpath"/>
-        </javadoc>
+        </javadoc>-->
 
     </target>
 
@@ -456,6 +494,9 @@
     that Tomcat is running on.
 
     NOTE:  This is the logical opposite of the "remove" target.
+    
+    
+    war="file:${build.home}"/>
 -->
 
     <target name="install" depends="build"
@@ -465,10 +506,19 @@
                 username="${manager.username}"
                 password="${manager.password}"
                 path="${app.path}"
-                war="file://${build.home}"/>
+                war="file:${dist.home}/${app.name}v${app.version}.war"/>
 
     </target>
 
+    <!-- Ejecucion de todas las tareas importantes -->
+    <target name="start" depends="clean,build,dist,remove"
+            description="Realiza todas las actividades necesarias para la instalación">
+        <install url="${manager.url}"
+                username="${manager.username}"
+                password="${manager.password}"
+                path="${app.path}"
+                war="file:${dist.home}/${app.name}v${app.version}.war"/>
+    </target>
 
 <!-- ==================== Reload Target ============================== -->
 <!--
@@ -526,7 +576,7 @@
 
 
   <target name="hbm2java"
-          description="Genera código Java desde los archivos de mapeo">
+          description="Genera codigo Java desde los archivos de mapeo">
 
       <taskdef name="hbm2java"
            classname="org.hibernate.tool.hbm2java.Hbm2JavaTask"

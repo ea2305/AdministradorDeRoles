@@ -51,6 +51,7 @@ public final class MCUListarRoles
         Collection resultado = mr.listarRoles();
 
         ActionMessages errores = new ActionMessages();
+        
         if (resultado != null) {
             if ( resultado.isEmpty() ) {
                 errores.add(ActionMessages.GLOBAL_MESSAGE,

@@ -118,7 +118,9 @@
                 name="formaListadoRoles"
                 scope="request"
                 validate="false">
-            <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaListadoRoles.jsp"/>
+            <forward    name="exito" 
+                        path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaListadoRoles.jsp"/>
+
             <forward name="fracaso" path="/WEB-INF/vista/pantallas/pantallaInicio.jsp"/>
         </action>
         <action path="/solicitarListarPaises"
@@ -349,7 +351,7 @@
                 name="formaListadoRecomendaciones"
                 scope="request"
                 validate="false">
-            <forward name="exito" path="/WEB-INF/vista/pantallas/servicios.jsp"/>
+                <forward name="exito" path="/WEB-INF/vista/pantallas/servicios.jsp"/>
         </action>
     </action-mappings>
 
