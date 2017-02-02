@@ -103,7 +103,7 @@
                          commands via the "/manager" web application)
 -->
 
-    <property name="app.name"        value="VGECGRAC"/>
+    <property name="app.name"        value="NOMBRE_DE_PROYECTO"/>
     <property name="app.version"     value="0.3"/>
     <property name="app.path"        value="/${app.name}"/>
 
