@@ -26,7 +26,6 @@
 
         <!-- Llamada a ajax -->
 		<script type="text/javascript" src="js/Ajax.js"></script>
-
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/plantilla.css">
         <link rel="stylesheet" type="text/css" href="css/mensajes.css">
