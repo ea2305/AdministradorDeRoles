@@ -26,6 +26,7 @@
 
         <!-- Llamada a ajax -->
 		<script type="text/javascript" src="js/Ajax.js"></script>
+        
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/plantilla.css">
         <link rel="stylesheet" type="text/css" href="css/mensajes.css">
@@ -34,7 +35,7 @@
 	
     <body>
 
-        <!-- Cambio de maquetacion tipo tabla por divs -->
+        <!-- Cambio de maquetacion tipo tabla por divs 
         <table class="marco" cellpadding="0">
             <tr>
                 <td colspan="2">
@@ -52,7 +53,7 @@
                 </td>
             </tr>
             <tr>
-                <!-- Footer Importante -->
+            
                 <td colspan="2">
 
                     <c:import url="/WEB-INF/vista/comun/barraPie.jsp" />
@@ -60,6 +61,7 @@
                 </td>
             </tr>
         </table>
+        -->
 
     </body>
 </html>

@@ -1,14 +1,9 @@
 
-	<!-- IS: Encabezado de Pagina (Banner) -->
-	<table class="barraBanner">
-		<tr>	
-			<td>
-				<img  src="images/logo-upch.png">
-			</td>
-			<td align="center" width="100%">Administrador de Roles V2</td>
-		</tr>
-
-	</table>
+	<div class="banner">
+		<div class="banner-title flex-center"> 
+			<h3 class="white-text text-shadow">Sistema administrador de roles</h3>
+		</div>
+	</div>
 	<!-- FS: Encabezado de Pagina (Banner) -->					
 
 					

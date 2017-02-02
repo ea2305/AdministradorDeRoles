@@ -1,4 +1,39 @@
+/*inicio Home */
 
+.banner{
+    background-image: url(http://images.hellogiggles.com/uploads/2015/01/23/shutterstock_214656274.jpg);
+    height: 15vh;
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    position: relative;
+}
+
+.banner-tittle{
+    height: 100%;
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 1px 4px 11px black;
+}
+
+.home-body{
+	height: 100vh;
+    color: black;
+    font-size: 2.5rem;
+}
+
+.flex-center{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-shadow{
+	text-shadow: 3px 4px 16px black;
+}
+
+/*fin Home*/
 
 body {
 	margin:0 0 0 0;
