@@ -62,6 +62,13 @@
     <property file="build.properties"/>
     <property file="${user.home}/build.properties"/>
 
+<!-- 
+
+    build.xml
+    >Nombre
+    >Ruta de catalina
+
+-->
 
 
 <!-- ==================== File and Directory Names =================== -->
