@@ -19,49 +19,35 @@
     <head>
     
         <title>
-            Administrador de Roles - UPCHIAPAS
+            Administrador de Roles | UPChiapas
         </title>
 
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <!-- Header configuration -->
+        <c:import url="/WEB-INF/vista/comun/header.jsp" />
 
-        <!-- Llamada a ajax -->
-		<script type="text/javascript" src="js/Ajax.js"></script>
-        
-        <!-- Hojas de estilo -->
-        <link rel="stylesheet" type="text/css" href="css/plantilla.css">
-        <link rel="stylesheet" type="text/css" href="css/mensajes.css">
+        <!-- local Stylesheets -->
 
     </head>
 	
     <body>
 
-        <!-- Cambio de maquetacion tipo tabla por divs 
-        <table class="marco" cellpadding="0">
-            <tr>
-                <td colspan="2">
+        <!-- Banner -->
+        <c:import url="/WEB-INF/vista/comun/banner.jsp" />
 
-                    <c:import url="/WEB-INF/vista/comun/banner.jsp" />
-                    <c:import url="/WEB-INF/vista/comun/barraMenu01.jsp" />
+        <!-- Navegacion -->
+        <c:import url="/WEB-INF/vista/comun/barraMenu01.jsp" />
 
-                </td>
-            </tr>
-            <tr height="490px">
-                <td align="center" valign="center" width="100%">
+        <!-- Cuerpo de documento -->
+        <c:import url="/WEB-INF/vista/pantallas/${param.c}" />    
 
-                    <c:import url="/WEB-INF/vista/pantallas/${param.c}" />
+        <!-- Footer -->
+        <c:import url="/WEB-INF/vista/comun/barraPie.jsp" />
+        
+        <!-- Scripts -->
+        <c:import  url="/WEB-INF/vista/comun/scripts.jsp"/>
 
-                </td>
-            </tr>
-            <tr>
-            
-                <td colspan="2">
-
-                    <c:import url="/WEB-INF/vista/comun/barraPie.jsp" />
-                    
-                </td>
-            </tr>
-        </table>
-        -->
+        <!-- local scripts -->
+        <script type="text/javascript" src="js/Ajax.js"></script>
 
     </body>
 </html>

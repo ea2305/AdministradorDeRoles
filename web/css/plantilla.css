@@ -1,12 +1,10 @@
 /*inicio Home */
 
 .banner{
-    background-image: url(http://images.hellogiggles.com/uploads/2015/01/23/shutterstock_214656274.jpg);
-    height: 15vh;
+    background-image: url(../images/banner-back.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
-
-    position: relative;
+    margin-bottom: 0px !important;
 }
 
 .banner-tittle{
@@ -31,6 +29,10 @@
 
 .text-shadow{
 	text-shadow: 3px 4px 16px black;
+}
+
+.light{
+	font-weight: 300;
 }
 
 /*fin Home*/

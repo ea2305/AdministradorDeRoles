@@ -8,31 +8,32 @@
 
         <title>Inicio</title>
 
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <!-- Header configuration -->
+        <c:import url="/WEB-INF/vista/comun/header.jsp" />
 
-        <link rel="stylesheet" type="text/css" href="css/plantilla.css"/>
-        <link rel="stylesheet" type="text/css" href="materialize/css/materialize.css"/>
-
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- local Stylesheets -->
 
     </head>
-	
+
     <body>
 
-        
+        <!-- Banner -->
         <c:import url="/WEB-INF/vista/comun/banner.jsp" />
+
         <!-- Navegacion -->
         <c:import url="/WEB-INF/vista/comun/barraMenu01.jsp" />
 
         <!-- Cuerpo de documento -->
         <section class="flex-center home-body">
-            Hola mundo !! prro :v
+            Hola mundo !! :v
         </section>        
 
         <!-- Footer -->
         <c:import url="/WEB-INF/vista/comun/barraPie.jsp" />
     </body>
 
-    <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-    <script type="text/javascript" src="materialize/js/materialize.js"></script>
+    <!-- Scripts -->
+    <c:import  url="/WEB-INF/vista/comun/scripts.jsp"/>
+
+    <!-- local scripts -->
 </html>
