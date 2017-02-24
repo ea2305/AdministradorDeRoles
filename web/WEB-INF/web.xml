@@ -5,10 +5,10 @@
  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd" 
  version="2.5"> 
 
-    <!-- Descripción general de la aplicación web -->
+    <!-- Descripciï¿½n general de la aplicaciï¿½n web -->
     <display-name>Prototipo SCEC 2013</display-name>
     <description>
-        SCEC - Sistema de Correo Electrónico Centralizado
+        SCEC - Sistema de Correo Electrï¿½nico Centralizado
     </description>
 
     <context-param>
@@ -16,9 +16,9 @@
         <param-value>edu.uag.iidis.scec.vista.scecRB</param-value>
     </context-param>
 
-    <!-- Configuración del Filtro  -->
+    <!-- Configuraciï¿½n del Filtro  -->
 
-<!--
+
 <filter>
     <filter-name>userAccessFilter</filter-name>
     <filter-class> 
@@ -39,15 +39,13 @@
     <url-pattern>*.do</url-pattern>
   </filter-mapping>
 
--->
-
  
   
-    <!-- Configuración de Struts -->
+    <!-- Configuraciï¿½n de Struts -->
 
 
 <!-- Action Servlet Mapping    -->
-    <!--
+ 
     <servlet>
         <servlet-name>action</servlet-name>
         <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
@@ -58,9 +56,9 @@
         <load-on-startup>2</load-on-startup>
 
         <multipart-config>
-    -->
+
             <!--  50MB max  Continuacion-->
-    <!--
+
             <max-file-size>52428800</max-file-size>
             <max-request-size>52428800</max-request-size>
             <file-size-threshold>0</file-size-threshold>
@@ -75,7 +73,6 @@
         <url-pattern>/servicios.dd</url-pattern>
     </servlet-mapping>
 
-    -->
 
     <!-- Action Servlet Mapping  -->
 
