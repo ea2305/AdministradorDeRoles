@@ -2,31 +2,39 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+
 <html>
     <head>
+
         <title>Ayuda</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <link rel="stylesheet" type="text/css" href="css/plantilla.css">
+
+        <!-- Header configuration -->
+        <c:import url="/WEB-INF/vista/comun/header.jsp" />
+
+        <!-- local Stylesheets -->
+
     </head>
-	
+
     <body>
-        <table class="marco" cellpadding="0">
-            <tr>
-                <td colspan="2">
-                    <c:import url="/WEB-INF/vista/comun/banner.jsp" />
-                    <c:import url="/WEB-INF/vista/comun/barraMenu01.jsp" />
-                </td>
-            </tr>
-            <tr height="490px">
-                <td align="center" valign="center" width="100%">
-                    <h3>Pantalla de Ayuda</h3>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <c:import url="/WEB-INF/vista/comun/barraPie.jsp" />
-                </td>
-            </tr>
-        </table>
+
+        <!-- Banner -->
+        <c:import url="/WEB-INF/vista/comun/banner.jsp" />
+
+        <!-- Navegacion -->
+        <c:import url="/WEB-INF/vista/comun/barraMenu01.jsp" />
+
+        <!-- Cuerpo de documento -->
+        <section class="flex-center home-body">
+            Pantalla de ayuda
+        </section>        
+
+        <!-- Footer -->
+        <c:import url="/WEB-INF/vista/comun/barraPie.jsp" />
     </body>
+
+    <!-- Scripts -->
+    <c:import  url="/WEB-INF/vista/comun/scripts.jsp"/>
+
+    <!-- local scripts -->
 </html>
+

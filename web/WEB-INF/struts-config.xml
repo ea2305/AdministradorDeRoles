@@ -122,7 +122,8 @@
             scope="request"
             validate="false">
             <forward name="exito" path="/WEB-INF/vista/pantallas/pantallaInicio.jsp"/>
-            <forward name="fracaso" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=pantallaLogin.jsp"/>
+            <!--forward name="fracaso" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=pantallaLogin.jsp"/-->
+            <forward name="fracaso" path="/WEB-INF/vista/pantallas/pantallaLogin.jsp"/>
         </action>
 
         <action path="/irInicio"

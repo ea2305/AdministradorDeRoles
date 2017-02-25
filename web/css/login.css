@@ -21,3 +21,17 @@ html, body{
     background-size: 100%;
     background-position: center;
 }
+
+/* label focus color */
+ .input-field input:focus + label {
+   color: limegreen !important;
+ }
+
+ form i:hover{
+    color: green;
+ }
+ /* label underline focus color */
+ .row .input-field input:focus {
+   border-bottom: 1px solid limegreen !important;
+   box-shadow: 0 1px 0 0 limegreen !important
+ }

@@ -1,7 +1,7 @@
 <!-- 
     Layout principal 
     Equipo de mantenimiento de sistemas
-    colaborators: 
+    collaborators: 
         Arturo Cordero Muñiz
         Elihu A. Cruz Albores
         Gabriel Reyes 

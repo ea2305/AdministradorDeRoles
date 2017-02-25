@@ -31,9 +31,9 @@
 
             <div class="col s12 m6 l6 push-l3 push-m3 card white">
 
-                <div class="card-content black-text">
+                <div class="card-content black-text center">
 
-                    <div class="card-title center">
+                    <div class="card-title ">
                         <h5>
                             <fmt:message key="formaLogin.titulo" />
                         </h5>
@@ -41,10 +41,10 @@
 
                     <form id="forma" action="procesarLogin.dd" method="POST">
 
-                        <div class="input-field col s12 text-green">
+                        <div class="input-field col s12 text-left">
                             <i class="material-icons prefix">account_circle</i>
 
-                            <input class="validate text-green"
+                            <input class="validate"
                                     id="icon_prefix"
                                     type="text" 
                                     name="user" 
@@ -57,10 +57,10 @@
                             </label>
                         </div><br/>
 
-                        <div class="input-field col s12 text-green">
+                        <div class="input-field col s12 text-left">
                             <i class="material-icons prefix">lock_outline</i>
                             
-                            <input class="validate text-green"
+                            <input class="validate"
                                     id="icon_prefix"
                                     type="password" 
                                     name="password" 
