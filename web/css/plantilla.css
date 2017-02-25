@@ -130,3 +130,7 @@ table.barraDerechos {
         font-size:9px;
 	width:100%;				
 }
+
+.row-item{
+	cursor: pointer;
+}

@@ -21,13 +21,18 @@
     <head>
     
         <title>
-            Administrador de Roles | UPChiapas
+            Registro del viajero
         </title>
 
         <!-- Header configuration -->
         <c:import url="/WEB-INF/vista/comun/header.jsp" />
 
         <!-- local Stylesheets -->
+
+
+        <!-- Scripts pre carga de DOM -->
+        <c:import  url="/WEB-INF/vista/comun/scripts.jsp"/>
+
 
     </head>
 	
@@ -44,12 +49,11 @@
 
         <!-- Footer -->
         <c:import url="/WEB-INF/vista/comun/barraPie.jsp" />
-        
-        <!-- Scripts -->
-        <c:import  url="/WEB-INF/vista/comun/scripts.jsp"/>
-
+    
         <!-- local scripts -->
         <script type="text/javascript" src="js/Ajax.js"></script>
+        <!-- Load main.js after jquery -->
+        <script type="text/javascript" src="js/main.js"></script>
 
     </body>
 </html>

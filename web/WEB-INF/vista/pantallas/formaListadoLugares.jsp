@@ -1,7 +1,7 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
     <%@ taglib uri="/WEB-INF/vista/etiquetas/struts-html.tld" prefix="html" %>
-    <%@ page contentType="text/html;charset=UTF-8" %>
+    
 <style>
   .HipervinculoAdmon{
     color:#000000;
@@ -13,15 +13,6 @@
 	text-decoration:underline;
   }
 </style>
-
-<!-- Mover scripts a un archivo propio -->
-<script language="javascript" type="text/javascript">
-
-  function EliminarLugar(strLugarName){
-    return confirm("¿Desea eliminar el estado '" + strLugarName + "'?")
-  }
-
-</script>
 
 <section class="custom-height row">
     
@@ -77,7 +68,7 @@
 
         <tbody>
             <c:forEach var="lugar" items="${formaListadoLugares.lugares}">
-                <tr>
+                <tr id="${lugar.id}" class="row-item">
                     <td>
                         <c:out value="${lugar.descripcion}"/>
                     </td>
@@ -119,7 +110,7 @@
             </c:forEach>
         
             <tr>
-                <td colspan="8" align="right"><b>Total:</b> ${formaListadoLugares.contador}</td>
+                <td colspan="9" align="right"><b>Total:</b> ${formaListadoLugares.contador}</td>
             </tr>
         </tbody>
     </table>
@@ -130,3 +121,6 @@
     </div>
 
 </section>
+
+<!-- Mover scripts a un archivo propio -->
+<script src="js/formaListadoLugares.js"></script>

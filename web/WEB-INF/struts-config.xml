@@ -194,7 +194,8 @@
                 validate="false">
             <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaNuevoPais.jsp"/>
         </action>
-		<action path="/solicitarListarLugares"
+		
+        <action path="/solicitarListarLugares"
                 type="edu.uag.iidis.scec.control.MCUListarLugares"
                 parameter="solicitarListarLugares"
                 name="formaListadoLugares"
@@ -203,6 +204,7 @@
             <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaListadoLugares.jsp"/>
             <forward name="fracaso" path="/WEB-INF/vista/pantallas/pantallaInicio.jsp"/>
         </action>
+        
 		<action path="/solicitarRegistroLugar"
                 type="edu.uag.iidis.scec.control.MCURegistrarLugar"
                 parameter="solicitarRegistroLugar"
