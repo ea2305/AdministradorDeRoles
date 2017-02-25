@@ -22,6 +22,16 @@ html, body{
     background-position: center;
 }
 
+.loader{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: 1000;
+
+    background: rgba(0, 0, 0, .9);
+    text-align: center
+}
+
 /* label focus color */
  .input-field input:focus + label {
    color: limegreen !important;

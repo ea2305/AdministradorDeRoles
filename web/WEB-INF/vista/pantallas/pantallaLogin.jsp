@@ -89,11 +89,11 @@
         </div>
     </div>
 
-
     </body>
 
     <!-- Scripts -->
     <c:import  url="/WEB-INF/vista/comun/scripts.jsp"/>
 
     <!-- local scripts -->
+    <scripts src="login.jss"></scripts>
 </html>

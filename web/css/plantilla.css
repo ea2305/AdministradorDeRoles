@@ -26,6 +26,11 @@
     font-size: 2.5rem;
 }
 
+.title{
+	margin: 3rem;
+	font-size: 2rem;
+}
+
 .flex-center{
 	display: flex;
     flex-direction: column;
@@ -49,6 +54,10 @@
 	display: inline;
 	text-align: left;
     font-size: 2rem;
+}
+
+.custom-height{
+	height: 100vh;
 }
 
 /*fin Home*/
