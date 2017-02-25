@@ -49,9 +49,11 @@ public class LoginDAO {
             }
             List results = query.list();
             int resultado = results.size();
+
             if (log.isDebugEnabled()) {
                  log.debug("<<<<<<<<< Result size " + resultado);
             }
+            
             if (resultado == 0) {
                return results;
             }

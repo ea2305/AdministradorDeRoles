@@ -1,0 +1,23 @@
+/* Estilos de la pagina web */
+
+
+.full-slide{
+	height: 100vh;
+}
+
+html, body{
+
+    /*Full view*/
+    overflow-y: hidden;
+	overflow-x: hidden;
+
+    /*Delete default parameters in browser*/
+    margin: 0px;
+    padding: 0px;
+
+    /*Configuration of background: */
+	background-image: url(../images/login/login_1.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}

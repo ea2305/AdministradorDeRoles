@@ -9,6 +9,8 @@
     version: 0.1.1
 -->
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<!-- Establecemos el lenguaje en español ! -->
+<%@ page contentType="text/html;charset=UTF-8" %>
 
 <!-- Cabecera de HTML-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 

@@ -108,9 +108,12 @@
 
     <!-- Definición de acciones -->
     <action-mappings>
-
+        <!--
         <action path="/irLogin"
                 forward="/WEB-INF/vista/pantallas/plantilla01.jsp?c=pantallaLogin.jsp" />
+        -->
+        <action path="/irLogin"
+                forward="/WEB-INF/vista/pantallas/pantallaLogin.jsp" />
 
         <action path="/procesarLogin"
             type="edu.uag.iidis.scec.control.MCULogin"
