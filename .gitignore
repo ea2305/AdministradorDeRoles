@@ -17,3 +17,4 @@ stop.sh
 #Carpetas de construccion
 dist/
 
+/nbproject/private/
