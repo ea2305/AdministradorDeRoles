@@ -1,4 +1,4 @@
-$(document).ready( function(){
+$(document).ready(function(){
 
     console.log("Documento cargado.");
 
@@ -6,8 +6,6 @@ $(document).ready( function(){
     $('.row-item').click( rowClick )
 
 });
-
-
 //Función de verificación
 function EliminarLugar(strLugarName){
     return confirm("¿Desea eliminar el estado '" + strLugarName + "'?")
@@ -17,3 +15,4 @@ function EliminarLugar(strLugarName){
 function rowClick( event ){
     console.log( event.currentTarget )
 }
+
