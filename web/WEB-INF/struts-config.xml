@@ -16,7 +16,6 @@
     </description>
 
 
-    <!-- Definici�n de Formas -->
     <form-beans>
 
         <form-bean name="formaNuevaPersona"
@@ -89,6 +88,10 @@
         
         <form-bean name="formaListadoEstados"
            type="edu.uag.iidis.scec.vista.FormaListadoEstados">
+        </form-bean>
+        
+        <form-bean name="formaModificarEstado"
+           type="edu.uag.iidis.scec.vista.FormaModificarEstado">
         </form-bean>
         
         <form-bean name="formaEliminarEstado"
@@ -237,6 +240,14 @@
                 validate="false">
             <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaNuevoEstado.jsp"/>
         </action>
+<!--        <action path="/solicitarModificarEstado"
+                type="edu.uag.iidis.scec.control.MCUModificarEstado"
+                parameter="solicitarModificarEstado"
+                name="formaModificarEstado"
+                scope="request"
+                validate="false">
+            <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarEstado.jsp"/>
+        </action>-->
         <action path="/procesarRegistro"
                 type="edu.uag.iidis.scec.control.MCURegistrarUsuario"
                 parameter="procesarRegistro"
@@ -270,7 +281,7 @@
             <forward name="exito" path="/WEB-INF/vista/pantallas/pantallaBienvenida.jsp"/>
             <forward name="volver" path="solicitarRegistroRol.do" redirect="true"/>
        </action>
-	   
+       
 	   <action path="/procesarRegistroRol"
                 type="edu.uag.iidis.scec.control.MCURegistrarRol"
                 parameter="procesarRegistroRol"
@@ -282,6 +293,7 @@
             <forward name="exito" path="/WEB-INF/vista/pantallas/pantallaBienvenida.jsp"/>
             <forward name="volver" path="solicitarRegistroRol.do" redirect="true"/>
        </action>
+       
        <action path="/procesarRegistroEstado"
                 type="edu.uag.iidis.scec.control.MCURegistrarEstado"
                 parameter="procesarRegistroEstado"
@@ -382,12 +394,10 @@
     </action-mappings>
 
 
-    <!-- Definici�n de archivos de recursos -->
     <message-resources
             parameter="edu.uag.iidis.scec.vista.scecRB"/>
 
 
-    <!-- Configuraci�n de Plug Ins -->
     <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
         <set-property property="pathnames"
                       value="/WEB-INF/validator-rules.xml,
