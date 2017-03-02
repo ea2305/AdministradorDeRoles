@@ -2,7 +2,6 @@ package edu.uag.iidis.scec.vista;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.validator.ValidatorForm;
@@ -13,8 +12,7 @@ import org.apache.struts.validator.ValidatorForm;
  *
  * @author Victor Ramos
  */
-public final class FormaNuevoEstado
-        extends ValidatorForm {
+public final class FormaNuevoEstado extends ValidatorForm {
 
     private String nombre;
     private String descripcion;
