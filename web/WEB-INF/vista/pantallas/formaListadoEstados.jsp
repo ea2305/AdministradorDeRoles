@@ -29,7 +29,7 @@
                     <td><c:out value="${estado.nombre}"/></td>
                     <td><c:out value="${estado.descripcion}"/></td>
                     <td>
-                        <a href='solicitarModificarEstado.do?id=<c:out value="${estado.id}"/>' class="btn waves-effect waves-light green darken-3">
+                        <a href='solicitarModificarEstado.do?id=<c:out value="${estado.id}"/>&nombre=<c:out value="${estado.nombre}"/>&descripcion=<c:out value="${estado.descripcion}"/>' class="btn waves-effect waves-light green darken-3">
                             <fmt:message key="formaListadoEstados.etiqueta.modificar" />
                         </a>
                     </td>
