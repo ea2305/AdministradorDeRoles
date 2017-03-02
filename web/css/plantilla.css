@@ -147,3 +147,11 @@ table.barraDerechos {
 	height: 50vh;
 	overflow-y: auto;
 }
+
+.selectable-card{
+	cursor: pointer;
+}
+
+.start-item{
+	fill: #ffab00;
+}

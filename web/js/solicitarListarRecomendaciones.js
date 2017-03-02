@@ -34,7 +34,11 @@ function chooseCard( event ){
         $("#usuario-id").html( usuario );
         $("#fecha-id").html( fecha );
         $("#comentario-id").html( comentario );
-        $("#calificacion-id").val( calificacion );
+        $("#start-rate").empty();
+        for(var i = 0 ; i < calificacion ; i++){
+            console.log('a-' , i)
+            $("#start-rate").append( getStar() )
+        }
         
         //Agregamos acciones de comentario
         console.log('add comment')
@@ -57,4 +61,10 @@ function getTemplateActions( id , nombre ){
 
 function EliminarCurrent(){
     return EliminarRecomendacion( current_name );
+}
+
+function getStar(){
+    return  "<div class='start-item' style='display: inline-block;'>" + 
+                "<svg style='height: 25px;' viewBox='0 0 512 512'><path d='M512 198.525l-176.89-25.704-79.11-160.291-79.108 160.291-176.892 25.704 128 124.769-30.216 176.176 158.216-83.179 158.216 83.179-30.217-176.176 128.001-124.769z'></path></svg>" + 
+            "</div>";
 }

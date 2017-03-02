@@ -19,8 +19,8 @@
 
 <section class="row custom-height">
 
-    <nav class="grey darken-4">
-        <div class="nav-wrapper grey darken-4">
+    <nav class="blue-grey darken-3">
+        <div class="nav-wrapper">
             <form>
                 <div class="input-field">
                     <input id="search" type="search" required>
@@ -42,7 +42,7 @@
             </div>
             <!-- Iteracion de elementos "cards" -->
 
-            <div id="list-recomendations">
+            <div id="list-recomendations" style="background: darkslategrey;">
 
                 <c:forEach var="recomendacion" items="${formaListadoRecomendaciones.recomendaciones}">
 
@@ -74,7 +74,7 @@
                                 </textarea>
                                 <label for="comentario">Reseña</label>
 
-                                <div class="start-rate">
+                                <div class="start-rate-real" style="display: none;">
                                     <input id="calificacion-${recomendacion.id}" class="start-element" type="number" value="${recomendacion.calificacion}">
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
                     </textarea>
                     <label for="comentario">Reseña</label>
 
-                    <div class="start-rate">
+                    <div id="start-rate">
                         <input id="calificacion-id" class="start-element" type="number" value="1">
                     </div>
                 </div>

@@ -32,7 +32,7 @@
     set to the current working directory.
 -->
 
-<project name="USJ" default="build" basedir=".">
+<project name="VGECGRAC" default="build" basedir=".">
 
 
 <!-- ===================== Property Definitions ====================== -->
@@ -62,13 +62,6 @@
     <property file="build.properties"/>
     <property file="${user.home}/build.properties"/>
 
-<!-- 
-
-    build.xml
-    >Nombre
-    >Ruta de catalina
-
--->
 
 
 <!-- ==================== File and Directory Names =================== -->
@@ -110,7 +103,7 @@
                          commands via the "/manager" web application)
 -->
 
-    <property name="app.name"        value="NOMBRE_DE_PROYECTO"/>
+    <property name="app.name"        value="VGECGRAC"/>
     <property name="app.version"     value="0.3"/>
     <property name="app.path"        value="/${app.name}"/>
 
@@ -124,10 +117,12 @@
     <property name="test.out.dir"    value="${basedir}/testout"/>
 
     <property   name="catalina.home"    
-                value="C:/tu_ruta_de_tomcat"/>
-    <property name="manager.url"      value="http://127.0.0.1:8080/manager/text"/>
-    <property name="manager.username" value="tu_usuario"/>
-    <property name="manager.password" value="tu_contraseña"/>
+                value="/Users/gerem/Documents/Tests/apache-tomcat-7.0.73"/>
+    
+    <property   name="manager.url"      
+                value="http://127.0.0.1:8080/manager/text"/>
+    <property name="manager.username" value="user1"/>
+    <property name="manager.password" value="A1234"/>
 
 
 
@@ -157,16 +152,16 @@
     For more information about the Manager web application, and the
     functionality of these tasks, see
     <http://localhost:8080/tomcat-docs/manager-howto.html>.
-    
-    <fileset dir="${catalina.home}/lib">
-        <include name="catalina-ant.jar"/>
-        <include name="tomcat-coyote.jar"/>
-        <include name="tomcat-util.jar"/>
-    </fileset>
-    <fileset dir="${catalina.home}/bin">
-        <include name="tomcat-juli.jar"/>
-    </fileset>  
-    <pathelement 
+	
+	<fileset dir="${catalina.home}/lib">
+		<include name="catalina-ant.jar"/>
+		<include name="tomcat-coyote.jar"/>
+		<include name="tomcat-util.jar"/>
+	</fileset>
+	<fileset dir="${catalina.home}/bin">
+		<include name="tomcat-juli.jar"/>
+	</fileset>	
+	<pathelement 
     location="${catalina.home}/lib/catalina-ant.jar" />
 -->
     <path id="tomcat.ant.classpath">
@@ -178,13 +173,13 @@
     </path>
 
     <taskdef name="install" classname="org.apache.catalina.ant.DeployTask"
-        classpathref="tomcat.ant.classpath" />
+		classpathref="tomcat.ant.classpath" />
     <taskdef name="list"    classname="org.apache.catalina.ant.ListTask"
-        classpathref="tomcat.ant.classpath" />
+		classpathref="tomcat.ant.classpath" />
     <taskdef name="reload"  classname="org.apache.catalina.ant.ReloadTask"
-        classpathref="tomcat.ant.classpath" />
+		classpathref="tomcat.ant.classpath" />
     <taskdef name="remove"  classname="org.apache.catalina.ant.UndeployTask"
-        classpathref="tomcat.ant.classpath" />
+		classpathref="tomcat.ant.classpath" />
 
 <!--  ==================== Compilation Control Options =============== -->
 <!--
@@ -274,13 +269,13 @@
         <fileset dir="${catalina.home}/shared/lib">
             <include name="*.jar"/>
         </fileset>
-        -->
-        
+		-->
+		
         <!-- 
             Incluye todas las clases generadas del aplicacion 
         -->
-        <pathelement location="${classes.home}"/>
 
+        <pathelement location="${classes.home}"/>
 
     </path>
 
@@ -501,9 +496,9 @@
     that Tomcat is running on.
 
     NOTE:  This is the logical opposite of the "remove" target.
-    
-    
-    war="file:${build.home}"/>
+	
+	
+	war="file:${build.home}"/>
 -->
 
     <target name="install" depends="build"
@@ -649,7 +644,6 @@
             <report format="frames" 
                     todir="${test.out.dir}"/>
         </junitreport>
-
     </target>
 
     <target name="alltests" 
@@ -664,5 +658,18 @@
             </classpath>
        </java>
   </target>
+
+    <!-- Tareas customizadas para el servidor -->
+    <target name="start-server">
+        <exec executable="sh">
+            <arg value="${catalina.home}/bin/startup.sh"/>
+        </exec>
+    </target>
+
+    <target name="stop-server">
+        <exec executable="sh">
+            <arg value="${catalina.home}/bin/shutdown.sh"/>
+        </exec>
+    </target>
 
 </project>
