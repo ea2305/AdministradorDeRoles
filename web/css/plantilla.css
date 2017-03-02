@@ -60,6 +60,14 @@
 	height: 100vh;
 }
 
+.all-height{
+	height: 100%;
+}
+
+.all-width{
+	width: 100%;
+}
+
 /*fin Home*/
 
 body {
@@ -133,4 +141,17 @@ table.barraDerechos {
 
 .row-item{
 	cursor: pointer;
+}
+
+#list-recomendations{
+	height: 50vh;
+	overflow-y: auto;
+}
+
+.selectable-card{
+	cursor: pointer;
+}
+
+.start-item{
+	fill: #ffab00;
 }
