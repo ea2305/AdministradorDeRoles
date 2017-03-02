@@ -18,31 +18,31 @@ import java.util.List;
 
 public class EstadoDAO {
 
-    private Log log = LogFactory.getLog(EstadoDAO.class);
+    private final Log log = LogFactory.getLog(EstadoDAO.class);
 
     public EstadoDAO() {
+        
     }
 
-
-    public Estado buscarPorId(Long idEstado, boolean bloquear)
-            throws ExcepcionInfraestructura {
+    public Estado buscarPorId(Long id, boolean block) throws ExcepcionInfraestructura {
 
         Estado estado = null;
 
         if (log.isDebugEnabled()) {
-            log.debug(">buscarPorID(" + idEstado + ", " + bloquear + ")");
+            
+            log.debug("> buscarPorID(" + id + ", " + block + ")");
+            
         }
 
         try {
-            if (bloquear) {
-                estado = (Estado)HibernateUtil.getSession()
-                                                .load(Estado.class, 
-                                                      idEstado, 
-                                                      LockMode.UPGRADE);
+            
+            if (block) {
+                
+                estado = (Estado)HibernateUtil.getSession().load(Estado.class,id, LockMode.UPGRADE);
+                
             } else {
-                estado = (Estado)HibernateUtil.getSession()
-                                                .load(Estado.class,
-                                                      idEstado);
+                
+                estado = (Estado)HibernateUtil.getSession().load(Estado.class, id);
             }
         } catch (HibernateException ex) {
             if (log.isWarnEnabled()) {
@@ -80,9 +80,7 @@ public class EstadoDAO {
     }
 
 
-    public Collection buscarPorEjemplo(Estado estado)
-            throws ExcepcionInfraestructura {
-
+    public Collection buscarPorEjemplo(Estado estado) throws ExcepcionInfraestructura {
 
         Collection estados;
  

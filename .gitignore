@@ -4,6 +4,8 @@ node_modules/
 #build
 build/
 
+nbproject/
+
 #Archivo de configuracion
 build.xml
 
@@ -17,3 +19,4 @@ stop.sh
 #Carpetas de construccion
 dist/
 
+/nbproject/private/
