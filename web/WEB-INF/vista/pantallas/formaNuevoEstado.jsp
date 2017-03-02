@@ -38,13 +38,13 @@
                                     Agregar y volver
                                 </button>
                                 
-                                <button type="button" class="btn waves-effect waves-light grey darken-3" onclick="location.href='solicitarRegistroEstado.do'" >
-                                    <i class="material-icons right">send</i>
+                                <button type="reset" class="btn waves-effect waves-light grey darken-3">
+                                    <i class="material-icons right">cancel</i>
                                     Reset
                                 </button>
                                 
-                                <button type="submit" class="btn waves-effect waves-light red darken-3" name="org.apache.struts.taglib.html.CANCEL" onclick="bCancel=true;">
-                                    <i class="material-icons right">send</i>
+                                <button type="submit" class="btn waves-effect waves-light red darken-3" name="org.apache.struts.taglib.html.CANCEL" formnovalidate onclick="bCancel=true;">
+                                    <i class="material-icons right">cancel</i>
                                     Cancelar
                                 </button>
                             </div>
