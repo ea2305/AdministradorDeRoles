@@ -124,6 +124,36 @@ public class EstadoDAO {
         
     }
     
+    public boolean modificar(Estado estado) throws ExcepcionInfraestructura {
+        
+        boolean toReturn = false;
+        
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug(">modificar(estado)");
+            
+        }
+        
+        try {
+            
+            System.out.println(estado.toString());
+            
+            HibernateUtil.getSession().saveOrUpdate(estado);
+            
+            toReturn = true;
+            
+        } catch (HibernateException ex) {
+            
+            if (this.log.isWarnEnabled()) {
+                
+                this.log.warn("<HibernateException");
+            }
+            throw new ExcepcionInfraestructura(ex);
+        }
+        
+        return toReturn;
+    }
+    
     public void hazPersistente(Estado estado) throws ExcepcionInfraestructura {
 
         if (this.log.isDebugEnabled()) {
