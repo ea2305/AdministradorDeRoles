@@ -132,7 +132,7 @@ public class ManejadorEstados {
     }
 
     public int crearEstado(Estado estado) {
-
+        
         int resultado;
 
         if (this.log.isDebugEnabled()) {
@@ -150,7 +150,7 @@ public class ManejadorEstados {
                 resultado = 1;
                 
             } else {
-
+                
                this.estadoDAO.hazPersistente(estado);
 
                resultado = 0;
@@ -158,7 +158,7 @@ public class ManejadorEstados {
             }
 
             HibernateUtil.commitTransaction();
-
+            
         } catch (ExcepcionInfraestructura ex) {
             
             HibernateUtil.rollbackTransaction();

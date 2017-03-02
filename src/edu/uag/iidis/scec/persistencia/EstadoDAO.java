@@ -203,7 +203,7 @@ public class EstadoDAO {
                  
             }
             
-            return query.list().isEmpty();
+            return !query.list().isEmpty();
 
         } catch (HibernateException ex) {
             

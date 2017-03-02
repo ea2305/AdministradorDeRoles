@@ -35,6 +35,8 @@ public class LoginDAO {
  
             String hql = "from Usuario where credencial.nombreUsuario= '"+nombreLogin+"' and credencial.claveAcceso = '"+password+"'";
             
+            System.out.println(hql);
+            
              if (log.isDebugEnabled()) {
                  log.debug(hql + nombreLogin);
             }
