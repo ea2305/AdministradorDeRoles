@@ -1,8 +1,6 @@
 package edu.uag.iidis.scec.modelo;
 
 import java.io.Serializable;
-import java.util.*;
-
 
 /**
  * Esta clase es usada para representar un rol de un
@@ -13,24 +11,23 @@ import java.util.*;
  * @author <a href="mailto:vramos@uag.mx">Victor Ramos</a>
  * @version 1.0
  */
-public class Estado extends ClaseBase 
-        implements Serializable {
+public class Estado extends ClaseBase implements Serializable {
 
     private Long id;
     private String nombre;
     private String descripcion;
-
-
+    
     public Estado() {
+        
     }
-
-    public Estado(Long id){
+    
+    public Estado(Long id) {
         this.id = id;
     }
-
-    public Estado(String nombre, String descripcion){
-        this.nombre=nombre;
-        this.descripcion=descripcion;
+    
+    public Estado(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
     /**
@@ -43,13 +40,12 @@ public class Estado extends ClaseBase
 
     /**
      * Establece el id del rol.
-     * @return void
+     * @param id
      */
     public void setId(Long id) {
         this.id = id;
     }
-
-
+    
     /**
      * Regresa el nombre del rol.
      * @return String
@@ -60,15 +56,14 @@ public class Estado extends ClaseBase
 
     /**
      * Establece el nombre del rol.
-     * @return void
+     * @param nombre
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     
     /**
-     * Regresa la descripciÃ³n del rol.
+     * Regresa la descripción del rol.
      * @return String
      */
     public String getDescripcion() {
@@ -76,12 +71,11 @@ public class Estado extends ClaseBase
     }
 
     /**
-     * Establece la descripciÃ³n del rol.
-     * @return void
+     * Establece la descripción del rol.
+     * @param descripcion
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
 
 }
