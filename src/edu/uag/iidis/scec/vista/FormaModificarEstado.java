@@ -63,4 +63,9 @@ public final class FormaModificarEstado extends ValidatorForm {
 
     }
 
+    @Override
+    public String toString() {
+        return "FormaModificarEstado{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
+    }
+
 }

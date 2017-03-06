@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -37,6 +36,8 @@ public final class MCUModificarEstado extends MappingDispatchAction {
     public ActionForward procesarModificarEstado(ActionMapping mapping, ActionForm form,
                 HttpServletRequest request, HttpServletResponse response) throws Exception {
         
+        System.out.println("Im here");
+        
         if (this.log.isDebugEnabled()) {
             
             this.log.debug("> procesarModificarEstado");
@@ -56,6 +57,8 @@ public final class MCUModificarEstado extends MappingDispatchAction {
         }
         
         FormaModificarEstado formaModificarEstado = (FormaModificarEstado) form;
+        
+        System.out.println(formaModificarEstado);
         
         Estado estado = new Estado(formaModificarEstado.getNombre(), formaModificarEstado.getDescripcion());
         
