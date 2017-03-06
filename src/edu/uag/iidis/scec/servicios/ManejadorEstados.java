@@ -11,110 +11,216 @@ import edu.uag.iidis.scec.persistencia.EstadoDAO;
 import edu.uag.iidis.scec.persistencia.hibernate.*;
 
 public class ManejadorEstados {
-    private Log log = LogFactory.getLog(ManejadorEstados.class);
-    private EstadoDAO dao;
+    
+    private final Log log = LogFactory.getLog(ManejadorEstados.class);
+    
+    private final EstadoDAO estadoDAO;
 
     public ManejadorEstados() {
-        dao = new EstadoDAO();
+        
+        this.estadoDAO = new EstadoDAO();
+        
     }
-
-
+    
     public Collection listarEstados() {
+        
         Collection resultado;
 
-        if (log.isDebugEnabled()) {
-            log.debug(">guardarUsuario(usuario)");
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug("> guardarUsuario(usuario)");
+            
         }
 
         try {
+            
             HibernateUtil.beginTransaction();
-            resultado = dao.buscarTodos();
+            
+            resultado = this.estadoDAO.buscarTodos();
+            
             HibernateUtil.commitTransaction();
+            
             return resultado;         
+            
         } catch (ExcepcionInfraestructura e) {
+            
             HibernateUtil.rollbackTransaction();
+            
             return null;
+            
         } finally {
+            
             HibernateUtil.closeSession();
+            
         }
+        
     }
 	
-	public Collection listarEstadoPorNombre(String nombre) {
+    public Collection listarEstadoPorNombre(String nombre) {
+        
         Collection resultado;
 
-        if (log.isDebugEnabled()) {
-            log.debug(">guardarUsuario(usuario)");
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug("> guardarUsuario(usuario)");
+            
         }
-
+        
         try {
+            
             HibernateUtil.beginTransaction();
-            resultado = dao.buscaEstado(nombre);
-            log.debug("Consulta "+resultado);
-			HibernateUtil.commitTransaction();
-            return resultado;         
-        } catch (ExcepcionInfraestructura e) {
+            
+            resultado = this.estadoDAO.buscaEstado(nombre);
+            
+            this.log.debug("Consulta: " + resultado);
+            
+            HibernateUtil.commitTransaction();
+            
+            return resultado;
+            
+        } catch (ExcepcionInfraestructura ex) {
+            
             HibernateUtil.rollbackTransaction();
+            
             return null;
+            
         } finally {
+            
             HibernateUtil.closeSession();
+            
         }
+        
     }
-	
-	
+    
     public void eliminarEstado(Long id) {
-        if (log.isDebugEnabled()) {
-            log.debug(">eliminarEstado(estado)");
+        
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug("> eliminarEstado(estado)");
+            
         }
+        
         try {
+            
             HibernateUtil.beginTransaction();           
-            Estado estado = dao.buscarPorId(id, true);
+            
+            Estado estado = this.estadoDAO.buscarPorId(id, true);
+            
             if (estado != null) {
-              dao.hazTransitorio(estado);
+                
+                this.estadoDAO.hazTransitorio(estado);
             }
+            
             HibernateUtil.commitTransaction();
-        } catch (ExcepcionInfraestructura e) {
+            
+        } catch (ExcepcionInfraestructura ex) {
+            
             HibernateUtil.rollbackTransaction();
-            if (log.isWarnEnabled()) {
-                log.warn("<ExcepcionInfraestructura");
+            
+            if (this.log.isWarnEnabled()) {
+                
+                this.log.warn("< ExcepcionInfraestructura");
+                
             }
+            
         } finally {
+            
             HibernateUtil.closeSession();
+            
         }
 
+    }
+    
+    public boolean modificarEstado(Estado estado) {
+        
+        boolean toReturn = false;
+
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug(">guardarEstado(estado)");
+            
+        }
+        
+        try {
+            
+            HibernateUtil.beginTransaction();
+            
+//            Estado estadoByID = this.estadoDAO.buscarPorId(estado.getId(), true);
+//            
+//            estadoByID.setNombre(estado.getNombre());
+//            estadoByID.setDescripcion(estado.getDescripcion());
+            
+            toReturn = this.estadoDAO.modificar(estado);
+
+            HibernateUtil.commitTransaction();
+            
+        } catch (ExcepcionInfraestructura ex) {
+            
+            HibernateUtil.rollbackTransaction();
+
+            if (this.log.isWarnEnabled()) {
+                
+                this.log.warn("< ExcepcionInfraestructura");
+                
+            }
+            
+        } finally {
+            
+            HibernateUtil.closeSession();
+            
+        }
+        
+        return toReturn;
     }
 
     public int crearEstado(Estado estado) {
-
+        
         int resultado;
 
-        if (log.isDebugEnabled()) {
-            log.debug(">guardarEstado(estado)");
-        }
-
-        try {
-            HibernateUtil.beginTransaction();           
+        if (this.log.isDebugEnabled()) {
             
-            if (dao.existeEstado(estado.getNombre())) {
-               resultado = 1; // Excepción. El nombre de ciudad ya existe
+            this.log.debug(">guardarEstado(estado)");
+            
+        }
+        
+        try {
+            
+            HibernateUtil.beginTransaction();
+            
+            if (this.estadoDAO.existeEstado(estado.getNombre())) {
+                
+                resultado = 1;
+                
             } else {
+                
+               this.estadoDAO.hazPersistente(estado);
 
-               dao.hazPersistente(estado);
-
-               resultado = 0; // Exito. El ciudad se creo satisfactoriamente.
+               resultado = 0;
+               
             }
 
             HibernateUtil.commitTransaction();
-
-        } catch (ExcepcionInfraestructura e) {
+            
+        } catch (ExcepcionInfraestructura ex) {
+            
             HibernateUtil.rollbackTransaction();
 
-            if (log.isWarnEnabled()) {
-                log.warn("<ExcepcionInfraestructura");
+            if (this.log.isWarnEnabled()) {
+                
+                this.log.warn("< ExcepcionInfraestructura");
+                
             }
-            resultado = 2;    // Excepción. Falla en la infraestructura
+            
+            resultado = 2;
+            
         } finally {
+            
             HibernateUtil.closeSession();
+            
         }
+        
         return resultado;
-    }    
+        
+    }
+    
 }

@@ -18,6 +18,9 @@ public class ManejadorLogin {
     }
 
     public Collection buscarLogin(String nombre, String password) {
+        
+        System.out.println(nombre);
+        System.out.println(password);
         Collection resultado;
 
         if (log.isDebugEnabled()) {
@@ -25,7 +28,10 @@ public class ManejadorLogin {
         }
 
         try {
+            
+            System.out.println("before");
             HibernateUtil.beginTransaction();
+            System.out.println("after");
             resultado = dao.buscarLogin(nombre,password);
             HibernateUtil.commitTransaction();
             return resultado;         

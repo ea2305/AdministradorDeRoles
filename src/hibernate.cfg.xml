@@ -20,37 +20,19 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bdscec?zeroDateTimeBehavior=convertToNull</property>
         <property name="hibernate.connection.username">vaksfk</property>
         <property name="hibernate.connection.password">jaqart_</property>
-		<!-- JDBC connection pool (use the built-in) -->
-		<property name="hibernate.connection.pool_size">1</property>
-	
-		<!-- SQL dialect -->
-		<property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
-
-		<!-- Enable Hibernate's automatic session context management -->
-		<property name="hibernate.current_session_context_class">thread</property>
-
-		<!-- Disable the second-level cache -->
-		<property name="hibernate.cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
-
-		<!-- Echo all executed SQL to stdout -->
-		<property name="hibernate.show_sql">true</property>
-
-
-
-
-        <!-- Usar el pool de conecciones de C3P0
-        <property name="c3p0.min_size">3</property>
-        <property name="c3p0.max_size">5</property>
-        <property name="c3p0.timeout">1800</property>
-        -->
-
-        <!-- Archivos ORM -->
+        <property name="hibernate.connection.pool_size">1</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+        <property name="hibernate.show_sql">true</property>
+        <!--<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>-->
+        
         <mapping resource="edu/uag/iidis/scec/modelo/Usuario.hbm.xml"/>
         <mapping resource="edu/uag/iidis/scec/modelo/Rol.hbm.xml"/>
         <mapping resource="edu/uag/iidis/scec/modelo/Ciudad.hbm.xml"/>
         <mapping resource="edu/uag/iidis/scec/modelo/Estado.hbm.xml"/>
-		<mapping resource="edu/uag/iidis/scec/modelo/Pais.hbm.xml"/>
-		<mapping resource="edu/uag/iidis/scec/modelo/Lugar.hbm.xml"/>
+        <mapping resource="edu/uag/iidis/scec/modelo/Pais.hbm.xml"/>
+        <mapping resource="edu/uag/iidis/scec/modelo/Lugar.hbm.xml"/>
         <mapping resource="edu/uag/iidis/scec/modelo/Recomendacion.hbm.xml"/>
     </session-factory>
 

@@ -12,10 +12,19 @@ import org.apache.struts.validator.ValidatorForm;
  *
  * @author Victor Ramos
  */
-public final class FormaNuevoEstado extends ValidatorForm {
+public final class FormaModificarEstado extends ValidatorForm {
 
+    private Long id;
     private String nombre;
     private String descripcion;
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -34,14 +43,14 @@ public final class FormaNuevoEstado extends ValidatorForm {
         return (this.descripcion);
     }
 
-
-    public void reset(ActionMapping mapping,
-                      HttpServletRequest request) {
-        nombre=null;
-        descripcion=null;
+    @Override
+    public void reset(ActionMapping mapping, HttpServletRequest request) {
+        nombre = null;
+        descripcion = null;
+        id = new Long(0);
     }
 
-
+    @Override
     public ActionErrors validate(ActionMapping mapping,
                                  HttpServletRequest request) {
 

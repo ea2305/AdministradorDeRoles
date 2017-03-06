@@ -2,19 +2,16 @@ package edu.uag.iidis.scec.vista;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.validator.ValidatorForm;
-
 
 /**
  * Form bean para el registro de una nueva persona.
  *
  * @author Victor Ramos
  */
-public final class FormaEliminarRol
-        extends ValidatorForm {
+public final class FormaEliminarRol extends ValidatorForm {
 
     private Long id;
 
@@ -23,26 +20,17 @@ public final class FormaEliminarRol
     }
 
     public Long getId() {
-        return (this.id);
+        return id;
     }
 
-
-    public void reset(ActionMapping mapping,
-                      HttpServletRequest request) {
-        id= new Long(0);
+    @Override
+    public void reset(ActionMapping mapping, HttpServletRequest request) {
+        this.id = new Long(0);
     }
-
-
-    public ActionErrors validate(ActionMapping mapping,
-                                 HttpServletRequest request) {
-
-        // Ejecuta las validaciones proporcionadas por Struts-Validator
-        ActionErrors errores = super.validate(mapping, request);
-
-        // Validaciones no cubiertas por Struts-Validator
-
-        return errores;
-
+    
+    @Override
+    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+        return super.validate(mapping, request);
     }
 
 }

@@ -1,7 +1,6 @@
 package edu.uag.iidis.scec.control;
 
 import edu.uag.iidis.scec.vista.*;
-import edu.uag.iidis.scec.modelo.*;
 import edu.uag.iidis.scec.servicios.*;
 
 import java.util.Collection;
@@ -18,99 +17,126 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.MappingDispatchAction;
 
+public final class MCUListarEstados extends MappingDispatchAction {
+    
+    private final Log log = LogFactory.getLog(MCURegistrarUsuario.class);
+    
+    public ActionForward solicitarListarEstados(ActionMapping mapping, ActionForm form,
+                HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-
-public final class MCUListarEstados
-        extends MappingDispatchAction {
-
-    private Log log = LogFactory.getLog(MCURegistrarUsuario.class);
-
-
-    public ActionForward solicitarListarEstados(
-                ActionMapping mapping,
-                ActionForm form,
-                HttpServletRequest request,
-                HttpServletResponse response)
-            throws Exception {
-
-        if (log.isDebugEnabled()) {
-            log.debug(">solicitarListarEstados");
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug("> solicitarListarEstados");
+            
         }
 
-        // Verifica si la acci√≥n fue cancelada por el usuario
         if (isCancelled(request)) {
-            if (log.isDebugEnabled()) {
-                log.debug("<La acci√≥n fue cancelada");
+            
+            if (this.log.isDebugEnabled()) {
+                
+                this.log.debug("< La acciÛn fue cancelada");
             }
-            return (mapping.findForward("cancelar"));
+            
+            return mapping.findForward("cancelar");
+            
         }
 
-        FormaListadoEstados forma = (FormaListadoEstados)form;
+        FormaListadoEstados formaListadoEstados = (FormaListadoEstados)form;
 
-        ManejadorEstados mr = new ManejadorEstados();
-        Collection resultado = mr.listarEstados();
+        ManejadorEstados manejadorEstados = new ManejadorEstados();
+        
+        Collection collection = manejadorEstados.listarEstados();
 
         ActionMessages errores = new ActionMessages();
-        if (resultado != null) {
-            if ( resultado.isEmpty() ) {
-                errores.add(ActionMessages.GLOBAL_MESSAGE,
-                    new ActionMessage("errors.registroVacio"));
+        
+        if (collection != null) {
+            
+            if (collection.isEmpty()) {
+                
+                errores.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.registroVacio"));
+                
                 saveErrors(request, errores);
+                
             } else {
-                forma.setEstados( resultado );
+                
+                formaListadoEstados.setEstados(collection);
+                
             }
-            return (mapping.findForward("exito"));
+            
+            return mapping.findForward("exito");
+            
         } else {
-            log.error("Ocurri√≥ un error de infraestructura");
-            errores.add(ActionMessages.GLOBAL_MESSAGE,
-                        new ActionMessage("errors.infraestructura"));                
+            
+            this.log.error("OcurriÛ un error de infraestructura");
+            
+            errores.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.infraestructura"));                
+            
             saveErrors(request, errores);
-            return ( mapping.findForward("fracaso") );
+            
+            return mapping.findForward("fracaso");
         }
-
+        
     }
 	
-	public ActionForward buscarEstado(
-                ActionMapping mapping,
-                ActionForm form,
-                HttpServletRequest request,
-                HttpServletResponse response)
-            throws Exception {
-
-        if (log.isDebugEnabled()) {
-            log.debug(">solicitarListarEstados");
+    public ActionForward buscarEstado(ActionMapping mapping, ActionForm form,
+                HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug("> solicitarListarEstados");
+            
         }
-
-        // Verifica si la acci√≥n fue cancelada por el usuario
+        
         if (isCancelled(request)) {
-            if (log.isDebugEnabled()) {
-                log.debug("<La acci√≥n fue cancelada");
+            
+            if (this.log.isDebugEnabled()) {
+                
+                this.log.debug("<La acciÛn fue cancelada");
+                
             }
-            return (mapping.findForward("cancelar"));
+            
+            return mapping.findForward("cancelar");
+            
         }
 
-        FormaListadoEstados forma = (FormaListadoEstados)form;
+        FormaListadoEstados formaListadoEstados = (FormaListadoEstados) form;
 
-        ManejadorEstados mr = new ManejadorEstados();
-        Collection resultado = mr.listarEstadoPorNombre(forma.getNombre());
-		log.debug("Resultado "+resultado);
+        ManejadorEstados manejadorEstados = new ManejadorEstados();
+        
+        Collection collection = manejadorEstados.listarEstadoPorNombre(formaListadoEstados.getNombre());
+        
+        this.log.debug("Resultado: " + collection);
+        
         ActionMessages errores = new ActionMessages();
-        if (resultado != null) {
-            if ( resultado.isEmpty() ) {
-                errores.add(ActionMessages.GLOBAL_MESSAGE,
-                    new ActionMessage("errors.registroVacio"));
+        
+        if (collection != null) {
+            
+            if (collection.isEmpty()) {
+                
+                errores.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.registroVacio"));
+                
                 saveErrors(request, errores);
+                
             } else {
-                forma.setEstados( resultado );
+                
+                formaListadoEstados.setEstados( collection );
+                
             }
-            return (mapping.findForward("exito"));
+            
+            return mapping.findForward("exito");
+            
         } else {
-            log.error("Ocurri√≥ un error de infraestructura");
-            errores.add(ActionMessages.GLOBAL_MESSAGE,
-                        new ActionMessage("errors.infraestructura"));                
+            
+            this.log.error("OcurriÛ un error de infraestructura");
+            
+            errores.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.infraestructura"));
+            
             saveErrors(request, errores);
-            return ( mapping.findForward("fracaso") );
+            
+            return mapping.findForward("fracaso");
+            
         }
-
+        
     }
+    
 }

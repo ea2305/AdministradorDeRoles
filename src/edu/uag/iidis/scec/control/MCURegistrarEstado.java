@@ -1,9 +1,5 @@
 package edu.uag.iidis.scec.control;
 
-import edu.uag.iidis.scec.vista.*;
-import edu.uag.iidis.scec.modelo.*;
-import edu.uag.iidis.scec.servicios.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,86 +13,98 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.MappingDispatchAction;
 
+import edu.uag.iidis.scec.servicios.ManejadorEstados;
+import edu.uag.iidis.scec.vista.FormaNuevoEstado;
+import edu.uag.iidis.scec.modelo.Estado;
 
+public final class MCURegistrarEstado extends MappingDispatchAction {
 
-public final class MCURegistrarEstado 
-        extends MappingDispatchAction {
-
-    private Log log = LogFactory.getLog(MCURegistrarUsuario.class);
-
-
-    public ActionForward solicitarRegistroEstado(
-                ActionMapping mapping,
-                ActionForm form,
-                HttpServletRequest request,
-                HttpServletResponse response)
-            throws Exception {
-
-        if (log.isDebugEnabled()) {
-            log.debug(">solicitarRegistroEstado");
+    private final Log log = LogFactory.getLog(MCURegistrarUsuario.class);
+    
+    public ActionForward solicitarRegistroEstado(ActionMapping mapping, ActionForm form,
+                HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug(">solicitarRegistroEstado");
+            
         }
-
-        return (mapping.findForward("exito"));
+        
+        return mapping.findForward("exito");
+        
     }
 
-
-
-    public ActionForward procesarRegistroEstado(
-                ActionMapping mapping,
-                ActionForm form,
-                HttpServletRequest request,
-                HttpServletResponse response)
-            throws Exception {
-
-        if (log.isDebugEnabled()) {
-            log.debug(">procesarRegistroEstado");
-        }
-
-        // Verifica si la acci√≥n fue cancelada por el usuario
-        if (isCancelled(request)) {
-            if (log.isDebugEnabled()) {
-                log.debug("<La acci√≥n fue cancelada");
-            }
-            return (mapping.findForward("cancelar"));
-        }
-
+    public ActionForward procesarRegistroEstado(ActionMapping mapping, ActionForm form,
+                HttpServletRequest request, HttpServletResponse response) throws Exception {
         
-        // Se obtienen los datos para procesar el registro
-        FormaNuevoEstado forma = (FormaNuevoEstado)form;
-
-        Estado estado = new Estado(forma.getNombre(),
-                          forma.getDescripcion());
-
-        ManejadorEstados mr = new ManejadorEstados();
-        int resultado = mr.crearEstado(estado);
-
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug("> procesarRegistroEstado");
+            
+        }
+        
+        if (isCancelled(request)) {
+            
+            if (this.log.isDebugEnabled()) {
+                
+                this.log.debug("< La acciÛn fue cancelada");
+                
+            }
+            
+            return mapping.findForward("cancelar");
+            
+        }
+        
+        FormaNuevoEstado formaNuevoEstado = (FormaNuevoEstado) form;
+        
+        Estado estado = new Estado(formaNuevoEstado.getNombre(), formaNuevoEstado.getDescripcion());
+        
+        ManejadorEstados manejadorEstados = new ManejadorEstados();
+        
+        int resultado = manejadorEstados.crearEstado(estado);
+        
         ActionMessages errores = new ActionMessages();
+        
         switch (resultado) {
-            case 0:   
-                return (mapping.findForward("exito"));
+            
+            case 0:
+                
+                return mapping.findForward("exito");
 
             case 1:
-                errores.add(ActionMessages.GLOBAL_MESSAGE,
-                            new ActionMessage("errors.nombreEstadoYaExiste",
-                                               forma.getNombre()));                
+                
+                errores.add(
+                        ActionMessages.GLOBAL_MESSAGE, 
+                        new ActionMessage("errors.nombreEstadoYaExiste", 
+                        formaNuevoEstado.getNombre())
+                );
+                
                 saveErrors(request, errores);
-                return (mapping.getInputForward());
+                
+                return mapping.getInputForward();
 
             case 3:
-                log.error("Ocurri√≥ un error de infraestructura");
-                errores.add(ActionMessages.GLOBAL_MESSAGE,
-                            new ActionMessage("errors.infraestructura"));                
+                
+                this.log.error("OcurriÛ un error de infraestructura");
+                
+                errores.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.infraestructura"));
+                
                 saveErrors(request, errores);
-                return (mapping.getInputForward());
-
+                
+                return mapping.getInputForward();
+                
             default:
-                log.warn("ManejadorUsuario.crearUsuario regres√≥ reultado inesperado");
-                errores.add(ActionMessages.GLOBAL_MESSAGE,
-                            new ActionMessage("errors.infraestructura"));                
+                
+                this.log.warn("ManejadorUsuario.crearUsuario regresÛ reultado inesperado");
+                
+                errores.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.infraestructura"));
+                
                 saveErrors(request, errores);
-                return (mapping.getInputForward());
+                
+                return mapping.getInputForward();
+                
         }
+        
     }
-
+    
 }
-
