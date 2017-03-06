@@ -102,16 +102,12 @@
     <div class="col s12 m6 l6"  style="margin-top: 5vh;height: 70vh;">
         <div class="card col s10 m10 l10 push-s1 push-m1 push-l1">
             <div class="card-content">
-                <div id="nombre-id" class="card-title">
-                    Datos de reseña
-                </div>
 
-                <lable id="estado-id">
-                </lable><br>
-                <lable id="usuario-id">
-                </lable><br>
-                <lable id="fecha-id">
-                </lable><br>
+                <div id="nombre-id" class="card-title"></div>
+
+                <lable id="estado-id"></lable><br>
+                <lable id="usuario-id"></lable><br>
+                <lable id="fecha-id"></lable><br>
 
                 <div class="input-field">
                     <textarea name="comentario" 
@@ -119,18 +115,14 @@
                                 cols="30" 
                                 rows="10"
                                 class="textarea1 materialize-textarea">
-                        Seleccione una reseña para ver mas información
                     </textarea>
                     <label for="comentario">Reseña</label>
-
-                    <div id="start-rate">
-                        <input id="calificacion-id" class="start-element" type="number" value="1">
-                    </div>
                 </div>
+
+                <div id="start-rate"></div>
+
             </div>
-            <div id="actions-list" class="card-action">
-                Acciones de reseña
-            </div>
+            <div id="actions-list" class="card-action"></div>
         </div>
 
         <a href="solicitarRegistroRecomendacion.do" 
