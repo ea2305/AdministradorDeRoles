@@ -1,18 +1,6 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
     <%@ taglib uri="/WEB-INF/vista/etiquetas/struts-html.tld" prefix="html" %>
-    
-<style>
-  .HipervinculoAdmon{
-    color:#000000;
-	text-decoration:none;
-  }
-  
-  .HipervinculoAdmon:hover{
-    color:#006666;
-	text-decoration:underline;
-  }
-</style>
 
 <section class="custom-height row">
     

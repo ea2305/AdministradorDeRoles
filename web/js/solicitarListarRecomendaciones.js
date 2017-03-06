@@ -17,6 +17,11 @@ function EliminarRecomendacion(strRecomendacionName){
 
 
 function chooseCard( event ){
+    if( $('#viewer-list').hasClass('hide') ){
+        $('#viewer-list').removeClass('hide');
+        $('#note-list').addClass('hide');
+    }
+    
     var id = event.currentTarget.id;
     console.log( event.currentTarget.id );
 

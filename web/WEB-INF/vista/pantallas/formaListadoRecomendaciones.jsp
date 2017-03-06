@@ -2,17 +2,6 @@
     <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
     <%@ taglib uri="/WEB-INF/vista/etiquetas/struts-html.tld" prefix="html" %>
     <%@ page contentType="text/html;charset=UTF-8" %>
-<style>
-  .HipervinculoAdmon{
-    color:#000000;
-	text-decoration:none;
-  }
-  
-  .HipervinculoAdmon:hover{
-    color:#006666;
-	text-decoration:underline;
-  }
-</style>
 
 <script src="js/solicitarListarRecomendaciones.js"></script>
 
@@ -100,7 +89,8 @@
     </div>
 
     <div class="col s12 m6 l6"  style="margin-top: 5vh;height: 70vh;">
-        <div class="card col s10 m10 l10 push-s1 push-m1 push-l1">
+        <h5 id="note-list" class="center" style="margin: 1em;">Seleccione un reseña</h5>
+        <div id="viewer-list" class="card col s10 m10 l10 push-s1 push-m1 push-l1 hide">
             <div class="card-content">
 
                 <div id="nombre-id" class="card-title"></div>
