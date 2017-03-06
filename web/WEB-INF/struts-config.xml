@@ -240,14 +240,14 @@
                 validate="false">
             <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaNuevoEstado.jsp"/>
         </action>
-<!--        <action path="/solicitarModificarEstado"
+        <action path="/solicitarModificarEstado"
                 type="edu.uag.iidis.scec.control.MCUModificarEstado"
                 parameter="solicitarModificarEstado"
                 name="formaModificarEstado"
                 scope="request"
                 validate="false">
             <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarEstado.jsp"/>
-        </action>-->
+        </action>
         <action path="/procesarRegistro"
                 type="edu.uag.iidis.scec.control.MCURegistrarUsuario"
                 parameter="procesarRegistro"
@@ -304,6 +304,16 @@
             <forward name="cancelar" path="/solicitarListarEstados.do" redirect="true"/>
             <forward name="exito" path="/WEB-INF/vista/pantallas/pantallaBienvenida.jsp"/>
             <forward name="volver" path="solicitarRegistroEstado.do" redirect="true"/>
+       </action>
+       
+       <action path="/procesarModificarEstado"
+                type="edu.uag.iidis.scec.control.MCUModificarEstado"
+                parameter="procesarModificarEstado"
+                name="formaModificarEstado"
+                scope="request"
+                validate="true"
+                input="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarEstado.jsp" >
+            <forward name="exito" path="/solicitarListarEstados.do"/>
        </action>
 
        <!--cambios-->
