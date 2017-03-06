@@ -20,3 +20,4 @@ stop.sh
 dist/
 
 /nbproject/private/
+hibernate.cfg.xml
