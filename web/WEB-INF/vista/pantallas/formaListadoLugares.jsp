@@ -57,11 +57,12 @@
         <tbody>
             <c:forEach var="lugar" items="${formaListadoLugares.lugares}">
                 <tr id="${lugar.id}" class="row-item">
-                    <td>
-                        <c:out value="${lugar.descripcion}"/>
-                    </td>
+                    
                     <td>
                         <c:out value="${lugar.nombre}"/>
+                    </td>
+                    <td>
+                        <c:out value="${lugar.descripcion}"/>
                     </td>
                     <td>
                         <c:out value="${lugar.poblacion}"/>
@@ -78,11 +79,12 @@
                     <td>
                         <c:out value="${lugar.moneda}"/>
                     </td>
-
                     <td>
-                        <a href='solicitarModificarLugar.do?id=<c:out value="${lugar.id}"/>'
-                        class="waves-effect waves-light btn blue">
+                        <a href='solicitarModificarLugar.do?id=<c:out value="${lugar.id}"/>&descripcion=<c:out value="${lugar.descripcion}"/>&nombre=<c:out value="${lugar.nombre}"/>&poblacion=<c:out value="${lugar.poblacion}"/>&coordenadas=<c:out value="${lugar.coordenadas}"/>&estado=<c:out value="${lugar.estado}"/>&pais=<c:out value="${lugar.pais}"/>&moneda=<c:out value="${lugar.moneda}"/>' 
+                            class="waves-effect waves-light btn blue">
+                            
                             <i class="material-icons left">mode_edit</i>
+                            
                             <!--fmt:message key="formaListadoLugares.etiqueta.modificar" /-->
                         </a>
                     </td>

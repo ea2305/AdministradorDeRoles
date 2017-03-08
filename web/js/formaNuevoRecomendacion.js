@@ -82,20 +82,5 @@ function select_lugar () {
                 console.error( err );
             }
         })
-/* Reemplazamos invocacion manual de ajax
 
-        var xmlhttp=new XMLHttpRequest();
-                    
-        xmlhttp.onreadystatechange=function(){
-          if(xmlhttp.status==404){
-              document.getElementById("lugar").innerHTML="Page not found";
-          }
-          if (xmlhttp.readyState==4 && xmlhttp.status==200){
-              document.getElementById("lugar").innerHTML=xmlhttp.responseText;
-          }
-        };
-        xmlhttp.open("GET","BuscarLugares.do?nombre="+valor,true);
-        xmlhttp.send();
-*/
-  
     }

@@ -7,6 +7,7 @@ import org.hibernate.criterion.Example;
 
 
 import edu.uag.iidis.scec.excepciones.ExcepcionInfraestructura;
+import edu.uag.iidis.scec.modelo.Estado;
 import edu.uag.iidis.scec.modelo.Lugar;
 import edu.uag.iidis.scec.persistencia.hibernate.HibernateUtil;
 import org.apache.commons.logging.Log;
@@ -196,6 +197,38 @@ public class LugarDAO {
             throw new ExcepcionInfraestructura(ex);
         }
     }
+    
+    
+    public boolean modificar( Lugar lugar ) throws ExcepcionInfraestructura {
+        
+        boolean toReturn = false;
+        
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug(">modificar(estado)");
+            
+        }
+        
+        try {
+            
+            System.out.println(lugar.toString());
+            
+            HibernateUtil.getSession().saveOrUpdate(lugar);
+            
+            toReturn = true;
+            
+        } catch (HibernateException ex) {
+            
+            if (this.log.isWarnEnabled()) {
+                
+                this.log.warn("<HibernateException");
+            }
+            throw new ExcepcionInfraestructura(ex);
+        }
+        
+        return toReturn;
+    }
+    
 
     //cambios
     public Collection buscarImagen(String nombreLugar)

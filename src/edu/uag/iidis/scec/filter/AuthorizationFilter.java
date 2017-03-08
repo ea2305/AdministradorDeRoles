@@ -47,40 +47,52 @@ public class AuthorizationFilter implements Filter {
 	}
 
 	public void doFilter(ServletRequest arg0, ServletResponse arg1,
-			FilterChain arg2) throws IOException, ServletException {
-		HttpServletRequest req = (HttpServletRequest) arg0; 
+                                FilterChain arg2) 
+                                throws IOException, ServletException {
+            
+            HttpServletRequest req = (HttpServletRequest) arg0; 
 	    HttpServletResponse res = (HttpServletResponse) arg1;
 	    HttpSession session = req.getSession();
 	    User user = (User) session.getAttribute("user"); 
 	    ActionErrors errors = new ActionErrors();
+            
 	    if (user == null) {
+                
 	      errors.add(ActionErrors.GLOBAL_MESSAGE,
 	        new ActionMessage("error.authentication.required"));
 			log.debug(">En el filtro - error.authentication.required" );
+                        
 	    }
 	    else {
-	      boolean hasRole = false;
-			if (log.isDebugEnabled()) {
-				log.debug(">En el filtro " + user.getUserid());
-			}
+                boolean hasRole = false;
+                if (log.isDebugEnabled()) {
+                    
+                    log.debug(">En el filtro " + user.getUserid());
+                    
+                } 
+                
+                if (!"".equals(user.getUserid())) {
 
-			if (!"".equals(user.getUserid())) {
-					hasRole = true;
-					log.debug(">En el filtro - UserID " + user.getUserid());
-			}
-			if (!hasRole) {
-				log.debug(">En el filtro - Sin Rol" + user.getUserid());
-				errors.add(ActionErrors.GLOBAL_MESSAGE,
-				new ActionMessage("error.authorization.nopermission", user.getUsername()));
-			}
-		}
+                    hasRole = true;
+                    log.debug(">En el filtro - UserID " + user.getUserid());
+
+                } 
+                
+                if (!hasRole) {
+
+                        log.debug(">En el filtro - Sin Rol" + user.getUserid());
+                        errors.add(ActionErrors.GLOBAL_MESSAGE,
+                        new ActionMessage("error.authorization.nopermission", user.getUsername()));
+
+                }
+            }
 	    if (errors.isEmpty()) {
 	    	arg2.doFilter(arg0, arg1);
 	    }
 	    else {
-			log.debug(">En el filtro - Con Errores");
-			req.setAttribute(Globals.ERROR_KEY, errors); 
-	      req.getRequestDispatcher(onErrorUrl).forward(req, res);
+                log.debug(">En el filtro - Con Errores");
+                req.setAttribute(Globals.ERROR_KEY, errors); 
+                req.getRequestDispatcher(onErrorUrl).forward(req, res);
 	    }
 	}	
 	

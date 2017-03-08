@@ -1,23 +1,25 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package edu.uag.iidis.scec.vista;
 
 import java.util.Collection;
-
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.validator.ValidatorForm;
 import org.apache.struts.upload.FormFile;
+import org.apache.struts.validator.ValidatorForm;
 
 /**
- * Form bean para el registro de una nueva persona.
  *
- * @author Victor Ramos
+ * @author gerem
  */
-public final class FormaNuevoLugar
-        extends ValidatorForm {
-
+public class FormaModificarLugar extends ValidatorForm  {
+    
+    private Long id;
     private String nombre;
     private String descripcion;
     private Long poblacion;
@@ -25,9 +27,12 @@ public final class FormaNuevoLugar
     private String estado;
     private String pais;
     private String moneda;
-	Collection estados;
+    Collection estados;
     private FormFile imagen;
-    
+
+    public Long getId() {
+        return id;
+    }
 
     public String getNombre() {
         return (this.nombre);
@@ -53,15 +58,19 @@ public final class FormaNuevoLugar
     public String getMoneda() {
         return (this.moneda);
     }
+    
     public Collection getEstados(){
             return (this.estados);
     }
-	
-	public void setEstados(Collection estados) {
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public void setEstados(Collection estados) {
         this.estados = estados;
     }
 	public void setNombre(String nombre) {
-            System.out.println("Estableciendo el nombre: " + nombre);
         this.nombre = nombre;
     }
 	
@@ -69,8 +78,6 @@ public final class FormaNuevoLugar
         this.descripcion = descripcion;
     }
 	public void setImagen(FormFile imagen) {
-            
-            
         this.imagen = imagen;
     }
 	public void setPoblacion(Long poblacion) {
@@ -108,5 +115,17 @@ public final class FormaNuevoLugar
         return errores;
 
     }
+
+    @Override
+    public String toString() {
+        return "FormaModificarLugar{" + "id=" + id + ", nombre=" + nombre + 
+                    ", descripcion=" + descripcion + ", poblacion=" + poblacion + 
+                    ", coordenadas=" + coordenadas + ", estado=" + estado + 
+                    ", pais=" + pais + ", moneda=" + moneda + ", estados=" + estados + 
+                    ", imagen=" + imagen + 
+                '}';
+    }
+    
+    
 
 }

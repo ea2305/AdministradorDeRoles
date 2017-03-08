@@ -152,8 +152,8 @@ var custom_style =
 function initMap(){
 
     var   geocoder,
-    infowindow,
-    marker;
+            infowindow,
+            marker;
 
     window.onload = function () {
 
@@ -183,12 +183,16 @@ function initMap(){
                 if (status == google.maps.GeocoderStatus.OK) {
                     
                     if (results[0]) {
-                        
-                    document.getElementById('coordenadas').value =  results[0].geometry.location;
+                    
+                    //Asignamos coordenadas a los campos
+                    $( '#coordenadas' ).val( results[0].geometry.location );
+                    $( '#field1' ).addClass('active')
                     
                     var a = results[0].formatted_address.split(',');
                     
-                    document.getElementById('estado').value =  a[1].trim();
+                    //Asignamos datos de estado
+                    $( '#estado' ).val( a[1].trim() );
+                    $( '#field2' ).addClass('active')
 
                     var valor = a[2];
                     
@@ -199,9 +203,12 @@ function initMap(){
                         success : function( res ){
                             var d = res.trim().replace(/\s/g, ',');
                             var d1 = d.split(',');
-                            //alert(d1[0] + ":"  +d1[5] + ":" + d1[10]);
-                            document.getElementById('pais').value =  d1[0];
-                            document.getElementById('moneda').value = d1[10];
+                            //Asignamos valores a los campos
+                            $('#pais').val( d1[0] );
+                            $( '#field3' ).addClass('active');
+                            
+                            $('#moneda').val( d1[10] );
+                            $( '#field4' ).addClass('active');
                         },
                         error : function( err ){
                             console.error( err );

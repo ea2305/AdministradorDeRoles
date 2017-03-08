@@ -1,7 +1,8 @@
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
-    <%@ taglib uri="/WEB-INF/vista/etiquetas/struts-html.tld" prefix="html" %>
-    <%@ page contentType="text/html;charset=UTF-8" %>
+   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="/WEB-INF/vista/etiquetas/struts-html.tld" prefix="html" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 
 <script src="js/solicitarListarRecomendaciones.js"></script>
 
@@ -23,11 +24,11 @@
     <div class="errors">
         <html:errors />
     </div>
-    <div class="card col s12 m6 l6" style="margin-top: 5vh;height: 70vh;">
+    <div class="card col s12 m6 l6 grey lighten-3" style="margin-top: 5vh;height: 70vh;">
         <div class="card-content">
             
             <div class="card-title">
-                Recomendaciones y reseñas
+                <strong>Recomendaciones y reseñas</strong>
             </div>
             <!-- Iteracion de elementos "cards" -->
 
@@ -35,39 +36,30 @@
 
                 <c:forEach var="recomendacion" items="${formaListadoRecomendaciones.recomendaciones}">
 
-                    <div id="${recomendacion.id}" class="selectable-card card col s10 m10 m10 push-s1 push-m1 push-l1">
+                    <div id="${recomendacion.id}" class="selectable-card card col s10 m10 m10 push-s1 push-m1 push-l1 horizontal ">
                         
-                        <div class="card-content">
+                        <div class="card-image">
+                            <img src="http://lorempixel.com/100/190/nature/6">
+                        </div>
+                        <div class="card-stacked">
+                        
+                            <div class="card-content">
 
-                            <div id="nombre-${recomendacion.id}" class="card-title">
-                                ${recomendacion.nombre}
-                            </div>
+                                <div id="nombre-${recomendacion.id}" class="card-title">
+                                    <strong>${recomendacion.nombre}</strong>
+                                </div>
 
-                            <!--lable id="estado-${recomendacion.id}">
-                                Estado: ${recomendacion.estado}
-                            </lable><br>
-                            <lable id="usuario-${recomendacion.id}">
-                                Usuario: ${recomendacion.usuario}
-                            </lable--><br>
-                            <lable id="fecha-${recomendacion.id}">
-                                Fecha: ${recomendacion.fecha}
-                            </lable><br>
-
-                            <div class="input-field">
-                                <textarea name="comentario" 
-                                            id="comentario-${recomendacion.id}"
-                                            cols="30" 
-                                            rows="10"
-                                            class="textarea1 materialize-textarea">
-                                    ${recomendacion.comentario}
-                                </textarea>
-                                <label for="comentario">Reseña</label>
-
+                                <lable id="fecha-${recomendacion.id}">
+                                    Fecha: ${recomendacion.fecha}
+                                </lable><br>
+                                <textarea name="comentario" id="comentario-${recomendacion.id}" style="display:none">${recomendacion.comentario}</textarea>
                                 <div class="start-rate-real" style="display: none;">
                                     <input id="calificacion-${recomendacion.id}" class="start-element" type="number" value="${recomendacion.calificacion}">
                                 </div>
                             </div>
+                            
                         </div>
+                        
                         <!--div class="card-action">
                             <a class="btn waves-effect waves-light blue" 
                                 href='solicitarModificarRecomendacion.do?id=<c:out value="${recomendacion.id}"/>'>
@@ -79,6 +71,8 @@
                                 <fmt:message key="formaListadoRecomendaciones.etiqueta.eliminar" />
                             </a>
                         </div-->
+                        
+                        
                     </div>
 
                 </c:forEach>
@@ -90,7 +84,7 @@
 
     <div class="col s12 m6 l6"  style="margin-top: 5vh;height: 70vh;">
         <h5 id="note-list" class="center" style="margin: 1em;">Seleccione un reseña</h5>
-        <div id="viewer-list" class="card col s10 m10 l10 push-s1 push-m1 push-l1 hide">
+        <div id="viewer-list" class="card col s10 m10 l10 push-s1 push-m1 push-l1 hide grey lighten-4">
             <div class="card-content">
 
                 <div id="nombre-id" class="card-title"></div>

@@ -26,7 +26,7 @@
 
             <!-- Titulo de la página -->
             <h2 class="white-text text-shadow center" style="margin-top: 10%">
-                Regístro del vasdjero
+                Regístro del Viajero
             </h2>
 
             <div class="col s12 m6 l6 push-l3 push-m3 card white">

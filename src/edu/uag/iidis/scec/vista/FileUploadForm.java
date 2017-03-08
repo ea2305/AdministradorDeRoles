@@ -1,23 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package edu.uag.iidis.scec.vista;
 
-import java.util.Collection;
 
+import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.validator.ValidatorForm;
+import org.apache.struts.action.ActionMessage;
 import org.apache.struts.upload.FormFile;
 
 /**
- * Form bean para el registro de una nueva persona.
  *
- * @author Victor Ramos
+ * @author gerem
  */
-public final class FormaNuevoLugar
-        extends ValidatorForm {
-
+public class FileUploadForm extends ActionForm {
+    
     private String nombre;
     private String descripcion;
     private Long poblacion;
@@ -25,15 +28,19 @@ public final class FormaNuevoLugar
     private String estado;
     private String pais;
     private String moneda;
-	Collection estados;
-    private FormFile imagen;
-    
+    Collection estados;
+    private FormFile file;
 
+    public FormFile getFile() {
+            return file;
+    }
+
+    public void setFile(FormFile file) {
+            this.file = file;
+    }
+    
     public String getNombre() {
         return (this.nombre);
-    }
-    public FormFile getImagen() {
-        return (this.imagen);
     }
     public String getDescripcion() {
         return (this.descripcion);
@@ -68,11 +75,6 @@ public final class FormaNuevoLugar
 	public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-	public void setImagen(FormFile imagen) {
-            
-            
-        this.imagen = imagen;
-    }
 	public void setPoblacion(Long poblacion) {
         this.poblacion = poblacion;
     }
@@ -89,24 +91,35 @@ public final class FormaNuevoLugar
     public void setMoneda(String moneda) {
         this.moneda = moneda;
     }
-	
-    public void reset(ActionMapping mapping,
-                      HttpServletRequest request) {
-        nombre=null;
-        descripcion=null;
-    }
 
-
+    @Override
     public ActionErrors validate(ActionMapping mapping,
-                                 HttpServletRequest request) {
+       HttpServletRequest request) {
 
-        // Ejecuta las validaciones proporcionadas por Struts-Validator
-        ActionErrors errores = super.validate(mapping, request);
+        ActionErrors errors = new ActionErrors();
 
-        // Validaciones no cubiertas por Struts-Validator
+        if( getFile().getFileSize()== 0){
+           errors.add("common.file.err",
+            new ActionMessage("error.common.file.required"));
+           return errors;
+        }
 
-        return errores;
+        //only allow textfile to upload
+        if(!"text/plain".equals(getFile().getContentType())){
+            errors.add("common.file.err.ext",
+             new ActionMessage("error.common.file.textfile.only"));
+            return errors;
+        }
 
+        //file size cant larger than 10kb
+        System.out.println(getFile().getFileSize());
+        if(getFile().getFileSize() > 10240){ //10kb
+           errors.add("common.file.err.size",
+                new ActionMessage("error.common.file.size.limit", 10240));
+           return errors;
+        }
+
+        return errors;
     }
-
+    
 }

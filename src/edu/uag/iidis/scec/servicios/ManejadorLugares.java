@@ -27,12 +27,14 @@ import org.dom4j.io.SAXReader;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.NodeList;
-public class ManejadorLugares {
+
+    public class ManejadorLugares {
+    
     private Log log = LogFactory.getLog(ManejadorLugares.class);
-    private LugarDAO dao;
+    private LugarDAO lugarDAO;
 
     public ManejadorLugares() {
-        dao = new LugarDAO();
+        lugarDAO = new LugarDAO();
     }
 
 
@@ -45,7 +47,7 @@ public class ManejadorLugares {
 
         try {
             HibernateUtil.beginTransaction();
-            resultado = dao.buscarTodos();
+            resultado = lugarDAO.buscarTodos();
             HibernateUtil.commitTransaction();
             return resultado;         
         } catch (ExcepcionInfraestructura e) {
@@ -65,7 +67,7 @@ public class ManejadorLugares {
 
         try {
             HibernateUtil.beginTransaction();
-            resultado = dao.buscarLugar(nombre);
+            resultado = lugarDAO.buscarLugar(nombre);
             HibernateUtil.commitTransaction();
             return resultado;         
         } catch (ExcepcionInfraestructura e) {
@@ -85,7 +87,7 @@ public class ManejadorLugares {
 
         try {
             HibernateUtil.beginTransaction();
-            resultado = dao.buscarEstado(nombre);
+            resultado = lugarDAO.buscarEstado(nombre);
             HibernateUtil.commitTransaction();
             return resultado;         
         } catch (ExcepcionInfraestructura e) {
@@ -97,14 +99,15 @@ public class ManejadorLugares {
     }
 	
     public void eliminarLugar(Long id) {
+        
         if (log.isDebugEnabled()) {
             log.debug(">eliminarLugar(lugar)");
         }
         try {
             HibernateUtil.beginTransaction();           
-            Lugar lugar = dao.buscarPorId(id, true);
+            Lugar lugar = lugarDAO.buscarPorId(id, true);
             if (lugar != null) {
-              dao.hazTransitorio(lugar);
+              lugarDAO.hazTransitorio(lugar);
             }
             HibernateUtil.commitTransaction();
         } catch (ExcepcionInfraestructura e) {
@@ -128,7 +131,7 @@ public class ManejadorLugares {
 
         try {
             HibernateUtil.beginTransaction();
-            resultado = dao.buscarImagen(nombre);
+            resultado = lugarDAO.buscarImagen(nombre);
             HibernateUtil.commitTransaction();
             return resultado;         
         } catch (ExcepcionInfraestructura e) {
@@ -165,11 +168,11 @@ public class ManejadorLugares {
         try {
             HibernateUtil.beginTransaction();           
             
-            if (dao.existeLugar(lugar.getNombre())) {
+            if (lugarDAO.existeLugar(lugar.getNombre())) {
                resultado = 1; // Excepción. El nombre de ciudad ya existe
             } else {
 
-               dao.hazPersistente(lugar);
+               lugarDAO.hazPersistente(lugar);
 
                resultado = 0; // Exito. El ciudad se creo satisfactoriamente.
             }
@@ -221,6 +224,50 @@ public class ManejadorLugares {
             e.printStackTrace();
         }
         return service;
+    }
+    
+    
+    public boolean modificarLugar(Lugar lugar) {
+        
+        boolean toReturn = false;
+
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug(">guardarEstado(estado)");
+            
+        }
+        
+        try {
+            
+            HibernateUtil.beginTransaction();
+            
+//            Estado estadoByID = this.estadoDAO.buscarPorId(estado.getId(), true);
+//            
+//            estadoByID.setNombre(estado.getNombre());
+//            estadoByID.setDescripcion(estado.getDescripcion());
+            
+            //toReturn = this.estadoDAO.modificar(estado);
+            toReturn = this.lugarDAO.modificar( lugar );
+
+            HibernateUtil.commitTransaction();
+            
+        } catch (ExcepcionInfraestructura ex) {
+            
+            HibernateUtil.rollbackTransaction();
+
+            if (this.log.isWarnEnabled()) {
+                
+                this.log.warn("< ExcepcionInfraestructura");
+                
+            }
+            
+        } finally {
+            
+            HibernateUtil.closeSession();
+            
+        }
+        
+        return toReturn;
     }
     
 }
