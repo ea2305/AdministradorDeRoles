@@ -10,7 +10,7 @@ nbproject/
 build.xml
 
 #Equemas de construccion
-esquema.sql
+#esquema.sql
 
 #Funciones de configuracion
 serve.sh
