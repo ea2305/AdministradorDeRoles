@@ -4,7 +4,9 @@ Implementación básica de struct para aplicación web para el control de roles 
 
 ## Configuraciones y requisitos
 
-* Tomcat 7.0
+* IDE NetBeans 8.1
+* Instalación Plugin [Struts2 NeatBeans](http://plugins.netbeans.org/plugin/39218)
+* Tomcat 8.x^
 * Java SE
 * mySQL
 * Hibernate
@@ -34,7 +36,7 @@ esquema.sql
 * Acceder a la tabla Usuarios para agregar nuevos datos de acceso.
 * ! Importante : Los datos de usuario [contraseña y nombre de usuario] deben contar con 6 caracteres minimo.
 
-## Instrucciones básicas
+## Instrucciones básicas <Last development>
 * Instrucción maestra: Crear WAR y Montar aplicación en el servidor
 ```
 ant start
