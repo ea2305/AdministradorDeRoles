@@ -98,8 +98,20 @@
            type="edu.uag.iidis.scec.vista.FormaModificarLugar">
         </form-bean>
         
+        <form-bean name="formaModificarPais"
+           type="edu.uag.iidis.scec.vista.FormaModificarPais">
+        </form-bean>
+        
+        <form-bean name="formaModificarRol"
+           type="edu.uag.iidis.scec.vista.FormaModificarRol">
+        </form-bean>
+        
         <form-bean name="formaEliminarEstado"
            type="edu.uag.iidis.scec.vista.FormaEliminarEstado">
+        </form-bean>
+        
+        <form-bean name="formaEliminarRol"
+           type="edu.uag.iidis.scec.vista.FormaEliminarRol">
         </form-bean>
         
     </form-beans>
@@ -242,6 +254,15 @@
             <forward name="exito" path="/solicitarListarLugares.do" redirect="true"/>
         </action>
         
+        <action path="/procesarEliminarPais"
+                type="edu.uag.iidis.scec.control.MCUEliminarPais"
+                parameter="procesarEliminarPais"
+                name="formaEliminarPais"
+                scope="request"
+                validate="false">
+            <forward name="exito" path="/solicitarListarPaises.do" redirect="true"/>
+        </action>
+        
         <action path="/solicitarRegistroRol"
                 type="edu.uag.iidis.scec.control.MCURegistrarRol"
                 parameter="solicitarRegistroRol"
@@ -265,7 +286,7 @@
                 parameter="solicitarModificarEstado"
                 name="formaModificarEstado"
                 scope="request"
-                validate="false">
+                validate="true">
             <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarEstado.jsp"/>
         </action>
         
@@ -274,9 +295,27 @@
                 parameter="solicitarModificarLugar"
                 name="formaModificarLugar"
                 scope="request"
-                validate="false">
+                validate="true">
             
             <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarLugar.jsp"/>
+        </action>
+        
+        <action path="/solicitarModificarPais"
+                type="edu.uag.iidis.scec.control.MCUModificarPais"
+                parameter="solicitarModificarPais"
+                name="formaModificarPais"
+                scope="request"
+                validate="true">
+            <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarPais.jsp"/>
+        </action>
+        
+        <action path="/solicitarModificarRol"
+                type="edu.uag.iidis.scec.control.MCUModificarRol"
+                parameter="solicitarModificarRol"
+                name="formaModificarRol"
+                scope="request"
+                validate="true">
+            <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarRol.jsp"/>
         </action>
         
         <action path="/procesarRegistro"
@@ -360,6 +399,26 @@
                 validate="true"
                 input="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarLugar.jsp" >
             <forward name="exito" path="/solicitarListarLugares.do"/>
+       </action>
+
+        <action path="/procesarModificarPais"
+                type="edu.uag.iidis.scec.control.MCUModificarPais"
+                parameter="procesarModificarPais"
+                name="formaModificarPais"
+                scope="request"
+                validate="true"
+                input="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarLugar.jsp" >
+            <forward name="exito" path="/solicitarListarPaises.do"/>
+       </action>
+       
+       <action path="/procesarModificarRol"
+                type="edu.uag.iidis.scec.control.MCUModificarRol"
+                parameter="procesarModificarRol"
+                name="formaModificarRol"
+                scope="request"
+                validate="true"
+                input="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarRol.jsp" >
+            <forward name="exito" path="/solicitarListarRoles.do"/>
        </action>
 
        <!--cambios-->
