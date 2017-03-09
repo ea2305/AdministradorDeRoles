@@ -3,14 +3,40 @@
     <%@ taglib uri="/WEB-INF/vista/etiquetas/struts-html.tld" prefix="html" %>
 
 
-    <br>
-    <font size='5'><fmt:message key="formaNuevaPersona.titulo" /></font>
+    
+    <div class="error">
+        <html:errors />
+    </div>
+    
+    <div class="row">
+        <form id="forma" action="procesarRegistro.do" method="post">
+            <div class="col s12 m6 l6">
 
+                <div class="card">
+
+                    <div class="card-title">
+                        <fmt:message key="formaNuevaPersona.titulo" />
+                    </div>
+
+                    <div class="card-content">
+
+                    </div>
+
+                    <div class="card-action">
+
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+        
+    </div>        
     <form id="forma" action="procesarRegistro.do" method="post">
         <table>
             <tr>
                 <td colspan="2">
-                   <html:errors />
+                   
                 </td>
             </tr>
             <tr>

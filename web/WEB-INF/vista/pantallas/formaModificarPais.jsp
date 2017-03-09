@@ -8,30 +8,31 @@
     
     <div class="custom-height" style="margin-top: 3rem">
 
-        <form class="row" id="forma" action="procesarRegistroPais.do" method="post">
+        <form class="row" id="forma" action="procesarModificarPais.do" method="post">
 
             <div class="card col s12 m10 l10 push-m1 push-l1">
 
                 <div class="card-title">
                     <h5 class="title center">
-                        <fmt:message key="formaNuevoPais.titulo" />
+                        Modificar País
                     </h5>
                 </div>
 
                 <div class="card-content">
+                    <input name="id" value="${formaModificarPais.id}"/>
 
                     <div class="input-field">
                         <input type="text" 
-                                       name="nombre"
-                                       class="validate"
-                                       size="50" 
-                                       maxlength="100" 
-                                       value="${formaNuevoPais.nombre}" />
+                                name="nombre"
+                                class="validate"
+                                size="50" 
+                                maxlength="100" 
+                                value="${formaModificarPais.nombre}" />
+                        
                         <label for="<fmt:message key="formaNuevoPais.etiqueta.nombre" />">
                             <fmt:message key="formaNuevoPais.etiqueta.nombre" />
                         </label>
                     </div>
-
 
                     <div class="input-field">
 
@@ -40,7 +41,7 @@
                                 name="descripcion" 
                                 size="50" 
                                 maxlength="100" 
-                                value="${formaNuevoPais.descripcion}" />
+                                value="${formaModificarPais.descripcion}" />
 
                         <label for="<fmt:message key="formaNuevoPais.etiqueta.descripcion" />">
                             <fmt:message key="formaNuevoPais.etiqueta.descripcion" />
@@ -55,26 +56,8 @@
                                 type="submit" 
                                 name="submit"
                                 value="Agregar y terminar">
-                        Agregar y terminar
+                        Actualizar y terminar
                         <i class="material-icons right">send</i>
-                    </button>
-
-                    <button     class="btn waves-effect waves-light black" 
-                                type="submit" 
-                                name="AgregarYTerminar"
-                                value="Agregar y volver"
-                                onclick="forma.action='procesarRegistroPais.do?volver=si'">
-                        Agregar y volver
-                        <i class="material-icons right">send</i>
-                    </button>
-
-                    <button     class="btn waves-effect waves-light blue" 
-                                type="button" 
-                                name="Reiniciar"
-                                value="Agregar y volver"
-                                onclick="location.href='solicitarRegistroPais.do'">
-                        Reiniciar
-                        <i class="material-icons right">load</i>
                     </button>
 
                     <button     class="btn waves-effect waves-light red" 

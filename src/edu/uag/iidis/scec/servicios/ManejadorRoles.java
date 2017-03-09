@@ -95,4 +95,47 @@ public class ManejadorRoles {
         }
         return resultado;
     }    
+    
+    
+    public boolean modificarRol(Rol rol) {
+        
+        boolean toReturn = false;
+
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug(">guardarRol( rol )");
+            
+        }
+        
+        try {
+            
+            HibernateUtil.beginTransaction();
+            
+//            Estado estadoByID = this.estadoDAO.buscarPorId(estado.getId(), true);
+//            
+//            estadoByID.setNombre(estado.getNombre());
+//            estadoByID.setDescripcion(estado.getDescripcion());
+            
+            toReturn = this.dao.modificar( rol );
+
+            HibernateUtil.commitTransaction();
+            
+        } catch (ExcepcionInfraestructura ex) {
+            
+            HibernateUtil.rollbackTransaction();
+
+            if (this.log.isWarnEnabled()) {
+                
+                this.log.warn("< ExcepcionInfraestructura");
+                
+            }
+            
+        } finally {
+            
+            HibernateUtil.closeSession();
+            
+        }
+        
+        return toReturn;
+    }
 }

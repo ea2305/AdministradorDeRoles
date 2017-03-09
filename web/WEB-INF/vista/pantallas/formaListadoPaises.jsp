@@ -52,10 +52,12 @@
                             <c:out value="${pais.descripcion}"/>
                         </td>
                         <td colspan="2" width="30%">
-                            <a href='solicitarModificarPais.do?id=<c:out value="${pais.id}"/>'
+                            
+                            <a href='solicitarModificarPais.do?id=<c:out value="${pais.id}"/>&nombre=<c:out value="${pais.nombre}"/>&descripcion=<c:out value="${pais.descripcion}"/>'
                                                    class="btn waves-effect blue">
                                 <fmt:message key="formaListadoEstados.etiqueta.modificar" />
                             </a>
+                            
                             <a href='procesarEliminarPais.do?id=<c:out value="${pais.id}"/>'
                                                    onClick="return EliminarPais('<c:out value="${pais.nombre}"/>')"
                                                    class="btn waves-effect red">

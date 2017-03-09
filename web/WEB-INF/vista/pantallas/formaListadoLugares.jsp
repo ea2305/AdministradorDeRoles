@@ -14,12 +14,8 @@
         <html:errors />
     </div>
 
-    <h5 class="title center col s12 m12 l12">
-        <fmt:message key="formaListadoLugares.titulo" />
-    </h5>
-
     <!-- Barra de busqueda -->
-    <nav class="grey darken-3 col s12 m10 l10 push-m1 push-l1">
+    <!--nav class="grey darken-3 col s12 m10 l10 push-m1 push-l1">
         <div class="nav-wrapper">
             <form>
                 <div class="input-field transparent">
@@ -31,34 +27,41 @@
                 </div>
             </form>
         </div>
-    </nav>
+    </nav-->
     <!-- Tabla de contenidos -->
-    <table class="responsive-table highlight col s12 m10 l10 push-m1 push-l1">
-        <thead>
-            <tr>
-                <th data-field="nombre">
-                    <fmt:message key="formaListadoLugares.etiqueta.nombre" />
-                </th>
-                <th data-field="descripcion">
-                    <fmt:message key="formaListadoLugares.etiqueta.descripcion" />
-                </th>
-                <th data-field="poblacion">
-                    <fmt:message key="formaListadoLugares.etiqueta.poblacion" />
-                </th>
-                <th data-field="coordenadas">
-                    <fmt:message key="formaListadoLugares.etiqueta.coordenadas" />
-                </th>
-                <th data-field="estado">
-                    <fmt:message key="formaListadoLugares.etiqueta.estado" />
-                </th>
-                <th data-field="pais">
-                    <fmt:message key="formaListadoLugares.etiqueta.pais" />
-                </th>
-                <th data-field="moneda">
-                    <fmt:message key="formaListadoLugares.etiqueta.moneda" />
-                </th>
-            </tr>
-        </thead>
+    
+    <div class="col s12 m10 l10 push-m1 push-l1">
+        
+        <h5 class="title col s12 m12 l12">
+            <fmt:message key="formaListadoLugares.titulo" />
+        </h5>
+        
+        <table class="responsive-table highlight">
+            <thead>
+                <tr>
+                    <th data-field="nombre">
+                        <fmt:message key="formaListadoLugares.etiqueta.nombre" />
+                    </th>
+                    <th data-field="descripcion">
+                        <fmt:message key="formaListadoLugares.etiqueta.descripcion" />
+                    </th>
+                    <th data-field="poblacion">
+                        <fmt:message key="formaListadoLugares.etiqueta.poblacion" />
+                    </th>
+                    <th data-field="coordenadas">
+                        <fmt:message key="formaListadoLugares.etiqueta.coordenadas" />
+                    </th>
+                    <th data-field="estado">
+                        <fmt:message key="formaListadoLugares.etiqueta.estado" />
+                    </th>
+                    <th data-field="pais">
+                        <fmt:message key="formaListadoLugares.etiqueta.pais" />
+                    </th>
+                    <th data-field="moneda">
+                        <fmt:message key="formaListadoLugares.etiqueta.moneda" />
+                    </th>
+                </tr>
+            </thead>
 
         <tbody>
             <c:forEach var="lugar" items="${formaListadoLugares.lugares}">
@@ -104,13 +107,11 @@
                         </a>
                     </td>
                 </tr>
-            </c:forEach>
+            </tbody>
+        </table>
         
-            <tr>
-                <td colspan="9" align="right"><b>Total:</b> ${formaListadoLugares.contador}</td>
-            </tr>
-        </tbody>
-    </table>
+    </div>    
+    
 
     <!-- agergar nuevo lugar -->
     <div class="options col s12 m10 l10 push-l1 push-m1">
