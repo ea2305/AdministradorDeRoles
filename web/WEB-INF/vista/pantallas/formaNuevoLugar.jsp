@@ -13,9 +13,9 @@
         <form id="forma" action="procesarRegistroLugar.do" method="post" enctype="multipart/form-data">
         
             <div class="col s12 m6 l6" style="margin-top: 3rem">
-                <div class="card col s12 m12 l12">
+                <div class="card col s12 m12 l12" style="margin-top: 3rem">
 
-                    <div class="card-title">
+                    <div class="card-title" >
                         <strong>
                             <fmt:message key="formaNuevoLugar.titulo" />
                         </strong>
@@ -40,17 +40,18 @@
                             
                     
                         
-                            <div class="file-field input-field">
-                                <div class="btn blue">
-                                    <span>File</span>
-                                    <input type="file" name="imagen"
-                                           value="${formaNuevoLugar.imagen}">
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text">
-                                </div>
-
+                        <!--div class="file-field input-field">
+                            <div class="btn blue">
+                                <span>File</span>
+                                <input type="file" name="imagen"
+                                       value="${formaNuevoLugar.imagen}">
                             </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+
+                        </div-->
+                        
 
                         <div class="input-field">
                             <input type="text" 

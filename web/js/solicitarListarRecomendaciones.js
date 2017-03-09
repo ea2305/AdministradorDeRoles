@@ -41,12 +41,12 @@ function chooseCard( event ){
         $("#comentario-id").html( comentario );
         $("#start-rate").empty();
         for(var i = 0 ; i < calificacion ; i++){
-            console.log('a-' , i)
-            $("#start-rate").append( getStar() )
+            console.log('a-' , i);
+            $("#start-rate").append( getStar() );
         }
         
         //Agregamos acciones de comentario
-        console.log('add comment')
+        console.log('add comment');
         $('#actions-list').empty();
         $('#actions-list').html( getTemplateActions( id , nombre) );
         
