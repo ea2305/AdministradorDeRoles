@@ -70,10 +70,10 @@ public class HibernateUtil {
         }
 
         try {
-            configuration = new Configuration();
-		    configuration.configure();
-		    serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();        
-		    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+          configuration = new Configuration();
+  		    configuration.configure();
+  		    serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();        
+  		    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
             
         } catch (Throwable ex) {

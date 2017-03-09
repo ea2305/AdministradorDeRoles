@@ -1,74 +1,116 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
     <%@ taglib uri="/WEB-INF/vista/etiquetas/struts-html.tld" prefix="html" %>
-<style>
-  .HipervinculoAdmon{
-    color:#000000;
-	text-decoration:none;
-  }
-  
-  .HipervinculoAdmon:hover{
-    color:#006666;
-	text-decoration:underline;
-  }
-</style>
-<script language="javascript" type="text/javascript">
-<!--
-  function EliminarLugar(strLugarName){
-    return confirm("¿Desea eliminar el estado '" + strLugarName + "'?")
-  }
--->
-</script>
-    <br>
-    <font size='5'><fmt:message key="formaListadoLugares.titulo" /></font>
-    <table cellpadding="0" cellspacing="0" width="60%" border="0">
-        <tr>
-            <td colspan="4" style="padding-top:25px; padding-bottom:25px;">
-                <a href="solicitarRegistroLugar.do" class="HipervinculoAdmon">Agregar nuevo lugar...</a>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-               <html:errors />
-            </td>
-        </tr>
-        <tr bgcolor="#CCCCCC">
-         <td><b><fmt:message key="formaListadoLugares.etiqueta.nombre" /></b></td>
-         <td style="border-right-style:solid; border-left-style:solid; border-width:1px; border-color:#000000;"><b><fmt:message key="formaListadoLugares.etiqueta.descripcion" /></b></td>
-         <td style="border-right-style:solid; border-left-style:solid; border-width:1px; border-color:#000000;"><b><fmt:message key="formaListadoLugares.etiqueta.poblacion" /></b></td>
-         <td style="border-right-style:solid; border-left-style:solid; border-width:1px; border-color:#000000;"><b><fmt:message key="formaListadoLugares.etiqueta.coordenadas" /></b></td>
-         <td style="border-right-style:solid; border-left-style:solid; border-width:1px; border-color:#000000;"><b><fmt:message key="formaListadoLugares.etiqueta.estado" /></b></td>
-         <td style="border-right-style:solid; border-left-style:solid; border-width:1px; border-color:#000000;"><b><fmt:message key="formaListadoLugares.etiqueta.pais" /></b></td>
-         <td style="border-right-style:solid; border-left-style:solid; border-width:1px; border-color:#000000;"><b><fmt:message key="formaListadoLugares.etiqueta.moneda" /></b></td>
-         
-		 <td colspan="2"><b><fmt:message key="formaListadoLugares.etiqueta.administracion" /></b></td>
-        </tr>
-        <c:forEach var="lugar" items="${formaListadoLugares.lugares}">
-            <tr>
-                <td align="left" width="20%"><c:out value="${lugar.nombre}"/></td>
-                <td align="left" width="60%"><c:out value="${lugar.descripcion}"/></td>
-				<td align="left" width="60%"><c:out value="${lugar.poblacion}"/></td>
-				<td align="left" width="60%"><c:out value="${lugar.coordenadas}"/></td>
-				<td align="left" width="60%"><c:out value="${lugar.estado}"/></td>
-        <td align="left" width="60%"><c:out value="${lugar.pais}"/></td>
-        <td align="left" width="60%"><c:out value="${lugar.moneda}"/></td>
 
-                <td align="left" width="20%">
-                    <a href='solicitarModificarLugar.do?id=<c:out value="${lugar.id}"/>'
-					   class="HipervinculoAdmon">
-                        <fmt:message key="formaListadoLugares.etiqueta.modificar" />
-                    </a>
-                </td>
-                <td>
-                    <a href='procesarEliminarLugar.do?id=<c:out value="${lugar.id}"/>'
-					   onClick="javascript: return EliminarLugar('<c:out value="${lugar.nombre}"/>')"
-					   class="HipervinculoAdmon">
-                        <fmt:message key="formaListadoLugares.etiqueta.eliminar" />
-                    </a>
-                </td>
+<section class="custom-height row">
+    
+    <div class="errors col s12 m12 l12">
+        <html:errors />
+    </div>
+
+    <h5 class="title center col s12 m12 l12">
+        <fmt:message key="formaListadoLugares.titulo" />
+    </h5>
+
+    <!-- Barra de busqueda -->
+    <nav class="grey darken-3 col s12 m10 l10 push-m1 push-l1">
+        <div class="nav-wrapper">
+            <form>
+                <div class="input-field transparent">
+                    <input id="search" type="search" required>
+                    <label class="label-icon" for="search">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
+        </div>
+    </nav>
+    <!-- Tabla de contenidos -->
+    <table class="responsive-table highlight col s12 m10 l10 push-m1 push-l1">
+        <thead>
+            <tr>
+                <th data-field="nombre">
+                    <fmt:message key="formaListadoLugares.etiqueta.nombre" />
+                </th>
+                <th data-field="descripcion">
+                    <fmt:message key="formaListadoLugares.etiqueta.descripcion" />
+                </th>
+                <th data-field="poblacion">
+                    <fmt:message key="formaListadoLugares.etiqueta.poblacion" />
+                </th>
+                <th data-field="coordenadas">
+                    <fmt:message key="formaListadoLugares.etiqueta.coordenadas" />
+                </th>
+                <th data-field="estado">
+                    <fmt:message key="formaListadoLugares.etiqueta.estado" />
+                </th>
+                <th data-field="pais">
+                    <fmt:message key="formaListadoLugares.etiqueta.pais" />
+                </th>
+                <th data-field="moneda">
+                    <fmt:message key="formaListadoLugares.etiqueta.moneda" />
+                </th>
             </tr>
-        </c:forEach>
-        <tr>
-            <td colspan="4" align="right" style="padding-top:25px;"><b>Total:</b> ${formaListadoLugares.contador}</td>
-        </tr>
+        </thead>
+
+        <tbody>
+            <c:forEach var="lugar" items="${formaListadoLugares.lugares}">
+                <tr id="${lugar.id}" class="row-item">
+                    
+                    <td>
+                        <c:out value="${lugar.nombre}"/>
+                    </td>
+                    <td>
+                        <c:out value="${lugar.descripcion}"/>
+                    </td>
+                    <td>
+                        <c:out value="${lugar.poblacion}"/>
+                    </td>
+                    <td>
+                        <c:out value="${lugar.coordenadas}"/>
+                    </td>
+                    <td>
+                        <c:out value="${lugar.estado}"/>
+                    </td>
+                    <td>
+                        <c:out value="${lugar.pais}"/>
+                    </td>
+                    <td>
+                        <c:out value="${lugar.moneda}"/>
+                    </td>
+                    <td>
+                        <a href='solicitarModificarLugar.do?id=<c:out value="${lugar.id}"/>&descripcion=<c:out value="${lugar.descripcion}"/>&nombre=<c:out value="${lugar.nombre}"/>&poblacion=<c:out value="${lugar.poblacion}"/>&coordenadas=<c:out value="${lugar.coordenadas}"/>&estado=<c:out value="${lugar.estado}"/>&pais=<c:out value="${lugar.pais}"/>&moneda=<c:out value="${lugar.moneda}"/>' 
+                            class="waves-effect waves-light btn blue">
+                            
+                            <i class="material-icons left">mode_edit</i>
+                            
+                            <!--fmt:message key="formaListadoLugares.etiqueta.modificar" /-->
+                        </a>
+                    </td>
+                    <td>
+                        <a href='procesarEliminarLugar.do?id=<c:out value="${lugar.id}"/>'
+                        onClick="javascript: return EliminarLugar('<c:out value="${lugar.nombre}"/>')"
+                        class="waves-effect waves-light btn red">
+                            <i class="material-icons left">delete</i>
+                            <!--fmt:message key="formaListadoLugares.etiqueta.eliminar" /-->
+                        </a>
+                    </td>
+                </tr>
+            </c:forEach>
+        
+            <tr>
+                <td colspan="9" align="right"><b>Total:</b> ${formaListadoLugares.contador}</td>
+            </tr>
+        </tbody>
     </table>
+
+    <!-- agergar nuevo lugar -->
+    <div class="options col s12 m10 l10 push-l1 push-m1">
+        <a href="solicitarRegistroLugar.do" class="waves-effect waves-light btn green">Agregar nuevo lugar...</a>
+    </div>
+
+</section>
+
+<!-- Mover scripts a un archivo propio -->
+<script src="js/formaListadoLugares.js"></script>

@@ -4,11 +4,13 @@ node_modules/
 #build
 build/
 
+nbproject/
+
 #Archivo de configuracion
 build.xml
 
 #Equemas de construccion
-esquema.sql
+#esquema.sql
 
 #Funciones de configuracion
 serve.sh
@@ -17,3 +19,5 @@ stop.sh
 #Carpetas de construccion
 dist/
 
+/nbproject/private/
+hibernate.cfg.xml

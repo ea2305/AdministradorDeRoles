@@ -17,13 +17,6 @@
   }
 </style>
 
-<script language="javascript" type="text/javascript">
-<!--
-  function EliminarRol(strRolName){
-    return confirm("¿Desea eliminar el rol '" + strRolName + "'?")
-  }
--->
-</script>
 
     <br>
     <font size='5'><fmt:message key="formaListadoRoles.titulo" /></font>
@@ -70,3 +63,11 @@
             <td colspan="4" align="right" style="padding-top:25px;"><b>Total:</b> ${formaListadoRoles.contador}</td>
         </tr>
     </table>
+
+    <script language="javascript" type="text/javascript">
+    <!--
+      function EliminarRol(strRolName){
+        return confirm("¿Desea eliminar el rol '" + strRolName + "'?")
+      }
+    -->
+    </script>

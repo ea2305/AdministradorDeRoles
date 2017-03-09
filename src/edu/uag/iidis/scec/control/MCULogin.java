@@ -37,12 +37,15 @@ public final class MCULogin
         if (log.isDebugEnabled()) {
             log.debug(">solicitarLogin");
         }
+
         FormaLogin forma = (FormaLogin) form;
         ManejadorLogin mr = new ManejadorLogin();
 
         Collection resultado = mr.buscarLogin(forma.getUser(),forma.getPassword());
 		//User user = new User("Victor", "1234");
+
 // simulamos que no se autentico	
+
 	   //request.getSession().setAttribute("user", user);
         User user = null;
         if (resultado.size() != 0) {
@@ -51,14 +54,17 @@ public final class MCULogin
                     new ActionMessage("errors.registroVacio"));
                 saveErrors(request, errores);
             }
+
             user = new User(forma.getUser(), forma.getPassword());
             request.getSession().setAttribute("user", user);
+
             return (mapping.findForward("exito"));
         } else {
             log.error("El usuario no existe");
             errores.add(ActionMessages.GLOBAL_MESSAGE,
                         new ActionMessage("errors.NoExisteUsuario"));                
             saveErrors(request, errores);
+            
             return ( mapping.findForward("fracaso"));
         }
   

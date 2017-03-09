@@ -1,2 +1,2 @@
-<h3>Bievenido al Sistema de Correo Electróncio Centralizado</h3>
+<h3>Bievenido al Sistema de Correo ElectrÃ³ncio Centralizado</h3>
 

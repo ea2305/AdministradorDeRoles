@@ -3,23 +3,23 @@ package edu.uag.iidis.scec.vista;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.validator.ValidatorForm;
-
 
 /**
  * Form bean para el registro de una nueva persona.
  *
  * @author Victor Ramos
  */
+
 public final class FormaListadoLugares
         extends ValidatorForm {
 
     private Collection lugares;
     private int contador;
-	private String nombre;
+    private String nombre;
     private String pais;
 
     public void setLugares(Collection lugares) {

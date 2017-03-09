@@ -1,7 +1,7 @@
 <!-- 
     Layout principal 
     Equipo de mantenimiento de sistemas
-    colaborators: 
+    collaborators: 
         Arturo Cordero Muñiz
         Elihu A. Cruz Albores
         Gabriel Reyes 
@@ -9,6 +9,8 @@
     version: 0.1.1
 -->
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<!-- Establecemos el lenguaje en español ! -->
+<%@ page contentType="text/html;charset=UTF-8" %>
 
 <!-- Cabecera de HTML-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
@@ -19,48 +21,39 @@
     <head>
     
         <title>
-            Administrador de Roles - UPCHIAPAS
+            Registro del viajero
         </title>
 
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <!-- Header configuration -->
+        <c:import url="/WEB-INF/vista/comun/header.jsp" />
 
-        <!-- Llamada a ajax -->
-		<script type="text/javascript" src="js/Ajax.js"></script>
+        <!-- local Stylesheets -->
 
-        <!-- Hojas de estilo -->
-        <link rel="stylesheet" type="text/css" href="css/plantilla.css">
-        <link rel="stylesheet" type="text/css" href="css/mensajes.css">
+
+        <!-- Scripts pre carga de DOM -->
+        <c:import  url="/WEB-INF/vista/comun/scripts.jsp"/>
+
 
     </head>
 	
     <body>
 
-        <!-- Cambio de maquetacion tipo tabla por divs -->
-        <table class="marco" cellpadding="0">
-            <tr>
-                <td colspan="2">
+        <!-- Banner -->
+        <c:import url="/WEB-INF/vista/comun/banner.jsp" />
 
-                    <c:import url="/WEB-INF/vista/comun/banner.jsp" />
-                    <c:import url="/WEB-INF/vista/comun/barraMenu01.jsp" />
+        <!-- Navegacion -->
+        <c:import url="/WEB-INF/vista/comun/barraMenu01.jsp" />
 
-                </td>
-            </tr>
-            <tr height="490px">
-                <td align="center" valign="center" width="100%">
+        <!-- Cuerpo de documento -->
+        <c:import url="/WEB-INF/vista/pantallas/${param.c}" />    
 
-                    <c:import url="/WEB-INF/vista/pantallas/${param.c}" />
-
-                </td>
-            </tr>
-            <tr>
-                <!-- Footer Importante -->
-                <td colspan="2">
-
-                    <c:import url="/WEB-INF/vista/comun/barraPie.jsp" />
-                    
-                </td>
-            </tr>
-        </table>
+        <!-- Footer -->
+        <c:import url="/WEB-INF/vista/comun/barraPie.jsp" />
+    
+        <!-- local scripts -->
+        <script type="text/javascript" src="js/Ajax.js"></script>
+        <!-- Load main.js after jquery -->
+        <script type="text/javascript" src="js/main.js"></script>
 
     </body>
 </html>

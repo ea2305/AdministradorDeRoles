@@ -35,6 +35,8 @@ public class LoginDAO {
  
             String hql = "from Usuario where credencial.nombreUsuario= '"+nombreLogin+"' and credencial.claveAcceso = '"+password+"'";
             
+            System.out.println(hql);
+            
              if (log.isDebugEnabled()) {
                  log.debug(hql + nombreLogin);
             }
@@ -49,9 +51,11 @@ public class LoginDAO {
             }
             List results = query.list();
             int resultado = results.size();
+
             if (log.isDebugEnabled()) {
                  log.debug("<<<<<<<<< Result size " + resultado);
             }
+            
             if (resultado == 0) {
                return results;
             }

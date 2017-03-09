@@ -1,14 +1,10 @@
 
-	<!-- IS: Encabezado de Pagina (Banner) -->
-	<table class="barraBanner">
-		<tr>	
-			<td>
-				<img  src="images/logo-upch.png">
-			</td>
-			<td align="center" width="100%">Administrador de Roles V2</td>
-		</tr>
-
-	</table>
+	<div class="banner row">
+		<div class="banner-title col s12 m12"> 
+			<img class="banner-logo" src="images/icons/traveler.png" alt="Traveler icon">
+			<h3 class="white-text text-shadow light title-system">Registro del viajero</h3>
+		</div>
+	</div>
 	<!-- FS: Encabezado de Pagina (Banner) -->					
 
 					

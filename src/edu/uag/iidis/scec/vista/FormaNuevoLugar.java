@@ -20,9 +20,9 @@ public final class FormaNuevoLugar
 
     private String nombre;
     private String descripcion;
-	private Long poblacion;
-	private String coordenadas;
-	private String estado;
+    private Long poblacion;
+    private String coordenadas;
+    private String estado;
     private String pais;
     private String moneda;
 	Collection estados;
@@ -53,14 +53,15 @@ public final class FormaNuevoLugar
     public String getMoneda() {
         return (this.moneda);
     }
-	public Collection getEstados(){
-		return (this.estados);
-	}
+    public Collection getEstados(){
+            return (this.estados);
+    }
 	
 	public void setEstados(Collection estados) {
         this.estados = estados;
     }
 	public void setNombre(String nombre) {
+            System.out.println("Estableciendo el nombre: " + nombre);
         this.nombre = nombre;
     }
 	
@@ -68,6 +69,8 @@ public final class FormaNuevoLugar
         this.descripcion = descripcion;
     }
 	public void setImagen(FormFile imagen) {
+            
+            
         this.imagen = imagen;
     }
 	public void setPoblacion(Long poblacion) {

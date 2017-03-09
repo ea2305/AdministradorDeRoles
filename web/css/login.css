@@ -1,0 +1,47 @@
+/* Estilos de la pagina web */
+
+
+.full-slide{
+	height: 100vh;
+}
+
+html, body{
+
+    /*Full view*/
+    overflow-y: hidden;
+	overflow-x: hidden;
+
+    /*Delete default parameters in browser*/
+    margin: 0px;
+    padding: 0px;
+
+    /*Configuration of background: */
+	background-image: url(../images/login/login_1.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.loader{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: 1000;
+
+    background: rgba(0, 0, 0, .9);
+    text-align: center
+}
+
+/* label focus color */
+ .input-field input:focus + label {
+   color: limegreen !important;
+ }
+
+ form i:hover{
+    color: green;
+ }
+ /* label underline focus color */
+ .row .input-field input:focus {
+   border-bottom: 1px solid limegreen !important;
+   box-shadow: 0 1px 0 0 limegreen !important
+ }
