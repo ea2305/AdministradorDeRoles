@@ -66,27 +66,27 @@
         <tbody>
             <c:forEach var="lugar" items="${formaListadoLugares.lugares}">
                 <tr id="${lugar.id}" class="row-item">
-                    <td>
+                    <td id="${lugar.id}-nombre">
                         <c:out value="${lugar.nombre}"/>
                     </td>
-                    <td>
+                    <td id="${lugar.id}-descripcion">
                         <c:out value="${lugar.descripcion}"/>
                     </td>
-                    <td>
+                    <td id="${lugar.id}-poblacion">
                         <c:out value="${lugar.poblacion}"/>
                     </td>
                     <td>
-                        <a href="#${lugar.id}" class="waves-effect waves-light" onclick="HacerMap();">
+                        <a id="${lugar.id}-coordenadas" href="#modalInfo" class="waves-effect waves-light">
                             <c:out value="${lugar.coordenadas}"/>
                         </a>
                     </td>
-                    <td>
+                    <td id="${lugar.id}-estado">
                         <c:out value="${lugar.estado}"/>
                     </td>
-                    <td>
+                    <td id="${lugar.id}-pais">
                         <c:out value="${lugar.pais}"/>
                     </td>
-                    <td>
+                    <td id="${lugar.id}-moneda">
                         <c:out value="${lugar.moneda}"/>
                     </td>
                     <td>
@@ -118,70 +118,64 @@
         <a href="solicitarRegistroLugar.do" class="waves-effect waves-light btn green">Agregar nuevo lugar...</a>
     </div>
 
-    <!-- Modales :3 -->
-    <c:forEach var="lugar" items="${formaListadoLugares.lugares}">
-        <div id="${lugar.id}" class="modal">
-            <div class="modal-content row">
-                <div class="col s12 m12 l12">
-                     <div class="col s11 m11 l11">
-                        <h5>
-                            <c:out value="${lugar.pais}"/>
+    <div id="modalInfo" class="modal">
+        <div class="modal-content row">
+            <div class="col s12 m12 l12">
+                 <div class="col s11 m11 l11">
+                    <h5 id="modal-pais">
+                        Pais
+                    </h5>
+                     <p id="modal-estado">
+                        Estado
+                    </p> 
+                </div>
+                <div class="col s1 m1 l1">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green">
+                        <i class="medium material-icons color-icon">cancel</i>
+                    </a>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="col s12 m12 l12">
+                <div class="col s12 m6 l6">
+                    <h5>Satisfaccion</h5>
+                    
+                    <!--
+                    Mapas
+                    -->
+                    
+                </div>
+                <div class="col s12 m6 l6">
+                    <div class="card espacioCard">
+                        <h5 id="modal-nombre">
+                            Nombre
                         </h5>
-                        <p>
-                            <c:out value="${lugar.estado}"/>
-                        </p> 
-                    </div>
-                    <div class="col s1 m1 l1">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-green">
-                            <i class="medium material-icons color-icon">cancel</i>
-                        </a>
+                        <p id="modal-poblacion">
+                            Poblacion:
+                        </p>
+                        <p id="modal-moneda">
+                            Moneda: 
+                        </p>
+                        <div class="card-action">
+                            <p id="modal-descripcion">
+                                Descripcion:
+                            </p>
+                        </div>
                     </div>
                 </div>
+                <!-- Visulaización de mapa -->
+                <div class="col s12 m12 l12 center frame-map">
 
-                <hr>
+                    <div id="map" style="height: 500px; width:93%"></div>
 
-                <div class="col s12 m12 l12">
-                    <div class="col s12 m6 l6">
-                        <h5>Satisfaccion</h5>
-                        aqui van cosas magicas de elihu
-                    </div>
-                    <div class="col s12 m6 l6">
-                        <div class="card espacioCard">
-                            <h5>
-                                <c:out value="${lugar.nombre}"/>
-                            </h5>
-                            <p>Poblacion: <c:out value="${lugar.poblacion}"/></p>
-                            <p>Moneda: <c:out value="${lugar.moneda}"/></p>
-                            <div class="card-action">
-                                <p>Descripcion:</p>
-                                <c:out value="${lugar.descripcion}"/>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Visulaización de mapa -->
-                    <div class="col s12 m12 l12 center frame-map">
-                        <div id="map" style="height: 500px; width:93%">
-                        <script>
-                          // google.maps.event.addDomListener(window, "load", function () {
-                          //     var myLatLng = {lat: 16.7656512, lng: -93.38004419999999};
-                          //     var map = new google.maps.Map(document.getElementById('map'), {
-                          //       zoom: 18,
-                          //       center: myLatLng
-                          //     });
-
-                          //     var marker = new google.maps.Marker({
-                          //       position: myLatLng,
-                          //       map: map,
-                          //       title: 'Hello World!'
-                          //     });
-                          // });
-                        </script>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-    </c:forEach>
+    </div>
+    
+    
 </section>
 
 <!-- Mover scripts a un archivo propio -->

@@ -11,26 +11,34 @@ $(document).ready(function(){
 });
 //FunciÃ³n de verificaciÃ³n
 function EliminarLugar(strLugarName){
-    return confirm("Â¿Desea eliminar el estado '" + strLugarName + "'?")
+    return confirm("¿Desea eliminar el estado '" + strLugarName + "'?");
 }
 
 //Acciones al seleccionar una fila en la tabla
 function rowClick( event ){
-    console.log( event.currentTarget )
+    
+    var id = event.currentTarget.id;
+    console.log( id )
+    
+    var coord = $('#' + id + '-coordenadas').html().trim();
+    console.log( coord.split(',')) 
+    
+    
+    $('#modal-pais').html( 
+            $('#' + id + '-pais').html().trim()
+    );
+    $('#modal-estado').html( $('#' + id + '-estado').html().trim() );
+    $('#modal-nombre').html( $('#' + id + '-nombre').html().trim() );
+    $('#modal-poblacion').html("Población: " +  $('#' + id + '-poblacion').html().trim() );
+    $('#modal-moneda').html( "Moneda: " + $('#' + id + '-moneda').html().trim() );
+    $('#modal-descripcion').html( $('#' + id + '-descripcion').html().trim() );
+    
+
 }
 
-function HacerMap(){
-	var myLatLng = {lat: 16.7656512, lng: -93.38004419999999};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 18,
-    center: myLatLng
-  });
-
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Hello World!'
-  });
+function HacerMap( event ){
+    console.log( event )
+    
 }
 
 //Configuracion de google maps
