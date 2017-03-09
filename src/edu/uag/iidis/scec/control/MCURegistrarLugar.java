@@ -55,7 +55,7 @@ public final class MCURegistrarLugar
             }
             return (mapping.findForward("exito"));
         } else {
-            log.error("OcurriÃ³ un error de infraestructura");
+            log.error("Ocurrió un error de infraestructura");
             errores.add(ActionMessages.GLOBAL_MESSAGE,
                         new ActionMessage("errors.infraestructura"));                
             saveErrors(request, errores);
@@ -95,7 +95,7 @@ public final class MCURegistrarLugar
         }
         
         FormaNuevoLugar forma = (FormaNuevoLugar)form;
-        
+        /*
         FormFile file = forma.getImagen();
         
         log.debug("Servlet -> " + getServlet().getServletContext().getRealPath("/") );
@@ -116,8 +116,18 @@ public final class MCURegistrarLugar
               fos.close();
             }
         }
-        Lugar lugar = new Lugar(forma.getNombre(),
-                          forma.getDescripcion(),forma.getPoblacion(),forma.getCoordenadas(),forma.getEstado(),"upload\\"+fileName,forma.getPais(),forma.getMoneda());
+        */
+        Lugar lugar = new Lugar(
+                        forma.getNombre(),
+                        forma.getDescripcion(),
+                        forma.getPoblacion(),
+                        forma.getCoordenadas(),
+                        forma.getEstado(),
+                        //"upload\\"+fileName,
+                        null,
+                        forma.getPais(),
+                        forma.getMoneda()
+        );
 
         ManejadorLugares mr = new ManejadorLugares();
         int resultado = mr.crearLugar(lugar);

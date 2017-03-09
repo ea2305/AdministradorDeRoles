@@ -13,9 +13,9 @@
         <form id="forma" action="procesarRegistroLugar.do" method="post" enctype="multipart/form-data">
         
             <div class="col s12 m6 l6" style="margin-top: 3rem">
-                <div class="card col s12 m12 l12">
+                <div class="card col s12 m12 l12" style="margin-top: 3rem">
 
-                    <div class="card-title">
+                    <div class="card-title" >
                         <strong>
                             <fmt:message key="formaNuevoLugar.titulo" />
                         </strong>
@@ -28,36 +28,36 @@
                         </div>
 
                         <div class="input-field">
-                            <input type="text" 
+                            <input type="text"
+                                   class="validate"
                                name="nombre" 
                                size="50" 
                                maxlength="100" 
-                               value="${formaNuevoLugar.nombre}" />
+                               value="${formaNuevoLugar.nombre}" 
+                               required/>
                             <label for="${formaNuevoLugar.nombre}">
                                 <fmt:message key="formaNuevoLugar.etiqueta.nombre" />
                             </label>   
-                        </div>
-                            
-                    
+                        </div>   
                         
-                            <div class="file-field input-field">
-                                <div class="btn blue">
-                                    <span>File</span>
-                                    <input type="file" name="imagen"
-                                           value="${formaNuevoLugar.imagen}">
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text">
-                                </div>
-
+                        <!--div class="file-field input-field">
+                            <div class="btn blue">
+                                <span>File</span>
+                                <input type="file" name="imagen"
+                                       value="${formaNuevoLugar.imagen}">
                             </div>
-
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div-->
+                        
                         <div class="input-field">
                             <input type="text" 
                                name="descripcion" 
+                               class="validate"
                                size="50" 
                                maxlength="100" 
-                               value="${formaNuevoLugar.descripcion}" />
+                               value="${formaNuevoLugar.descripcion}" required/>
                             <label for="${formaNuevoLugar.descripcion}">
                                 <fmt:message key="formaNuevoLugar.etiqueta.descripcion" />
                             </label>   
@@ -66,10 +66,12 @@
                         <div class="input-field">
                             <input type="text" 
                                name="coordenadas" 
+                               class="validate"
                                id="coordenadas"
                                size="50" 
                                maxlength="100" 
-                               value="${formaNuevoLugar.coordenadas}" />
+                               value="${formaNuevoLugar.coordenadas}" 
+                               required/>
                             <label id="field1" for="${formaNuevoLugar.coordenadas}">
                                 <fmt:message key="formaNuevoLugar.etiqueta.coordenadas" />
                             </label>   
@@ -77,11 +79,13 @@
 
                         <div class="input-field">
                             <input type="text"
+                                    class="validate"
                                     id="estado"
                                     name="estado"
                                     size="50" 
                                     maxlength="100" 
-                                    value="${formaNuevoLugar.estado}"/>
+                                    value="${formaNuevoLugar.estado}"
+                                    required/>
                             <label id="field2" for="${formaNuevoLugar.estado}">
                                 <fmt:message key="formaNuevoLugar.etiqueta.estado" />
                             </label>
@@ -93,7 +97,9 @@
                                         name="pais"
                                         size="50" 
                                         maxlength="100" 
-                                        value="${formaNuevoLugar.pais}"/>
+                                        class="validate"
+                                        value="${formaNuevoLugar.pais}"
+                                        required/>
                                 <label id="field3" for="${formaNuevoLugar.pais}">
                                     <fmt:message key="formaNuevoLugar.etiqueta.pais" />
                                 </label>
@@ -106,7 +112,9 @@
                                     name="moneda"
                                     size="50" 
                                     maxlength="100" 
-                                    value="${formaNuevoLugar.moneda}"/>
+                                    class="validate"
+                                    value="${formaNuevoLugar.moneda}"
+                                    required/>
                                 <label id="field4" for="${formaNuevoLugar.moneda}">
                                     <fmt:message key="formaNuevoLugar.etiqueta.moneda" />
                                 </label>

@@ -193,6 +193,37 @@ public class RolDAO {
             throw new ExcepcionInfraestructura(ex);
         }
     }
+    
+     
+    public boolean modificar(Rol rol) throws ExcepcionInfraestructura {
+        
+        boolean toReturn = false;
+        
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug(">modificar( rol )");
+            
+        }
+        
+        try {
+            
+            System.out.println(rol.toString());
+            
+            HibernateUtil.getSession().saveOrUpdate(rol);
+            
+            toReturn = true;
+            
+        } catch (HibernateException ex) {
+            
+            if (this.log.isWarnEnabled()) {
+                
+                this.log.warn("<HibernateException");
+            }
+            throw new ExcepcionInfraestructura(ex);
+        }
+        
+        return toReturn;
+    }
 
 
 }
