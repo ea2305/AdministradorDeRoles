@@ -107,9 +107,9 @@
                         </a>
                     </td>
                 </tr>
-            </tbody>
-        </table>
-        
+            </c:forEach>
+        </tbody>
+    </table>
     </div>    
     
 
@@ -180,7 +180,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </c:forEach>
 </section>
@@ -189,5 +188,4 @@
 <script src="js/jquery-3.1.1.js"></script>
 <script src="materialize/js/materialize.js"></script>
 <script src="js/formaListadoLugares.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbSOVcUH2d9pQw4yuwCFE3ondsvj6vJko"
-type="text/javascript"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbSOVcUH2d9pQw4yuwCFE3ondsvj6vJko"></script>
