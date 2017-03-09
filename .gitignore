@@ -4,7 +4,11 @@ node_modules/
 #build
 build/
 
+#Weas de netbeans
 nbproject/
+
+#Configuracion de hibernate
+hibernate.cfg.xml:
 
 #Archivo de configuracion
 build.xml
