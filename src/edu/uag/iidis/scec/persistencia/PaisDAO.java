@@ -53,7 +53,37 @@ public class PaisDAO {
         }
         return pais;
     }
-
+    
+        
+    public boolean modificar(Pais pais) throws ExcepcionInfraestructura {
+        
+        boolean toReturn = false;
+        
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug(">modificar(pais)");
+            
+        }
+        
+        try {
+            
+            System.out.println(pais.toString());
+            
+            HibernateUtil.getSession().saveOrUpdate(pais);
+            
+            toReturn = true;
+            
+        } catch (HibernateException ex) {
+            
+            if (this.log.isWarnEnabled()) {
+                
+                this.log.warn("<HibernateException");
+            }
+            throw new ExcepcionInfraestructura(ex);
+        }
+        
+        return toReturn;
+    }
 
     public Collection buscarTodos()
             throws ExcepcionInfraestructura {

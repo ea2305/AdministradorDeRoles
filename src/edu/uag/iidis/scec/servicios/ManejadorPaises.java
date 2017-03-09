@@ -60,6 +60,49 @@ public class ManejadorPaises {
         }
 
     }
+    
+        
+    public boolean modificarPais(Pais pais) {
+        
+        boolean toReturn = false;
+
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug(">guardarPais( Pais )");
+            
+        }
+        
+        try {
+            
+            HibernateUtil.beginTransaction();
+            
+//            Estado estadoByID = this.estadoDAO.buscarPorId(estado.getId(), true);
+//            
+//            estadoByID.setNombre(estado.getNombre());
+//            estadoByID.setDescripcion(estado.getDescripcion());
+            
+            toReturn = this.dao.modificar( pais );
+
+            HibernateUtil.commitTransaction();
+            
+        } catch (ExcepcionInfraestructura ex) {
+            
+            HibernateUtil.rollbackTransaction();
+
+            if (this.log.isWarnEnabled()) {
+                
+                this.log.warn("< ExcepcionInfraestructura");
+                
+            }
+            
+        } finally {
+            
+            HibernateUtil.closeSession();
+            
+        }
+        
+        return toReturn;
+    }
 
     public int crearPais(Pais pais) {
 

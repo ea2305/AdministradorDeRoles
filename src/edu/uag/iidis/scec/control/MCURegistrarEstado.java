@@ -66,7 +66,7 @@ public final class MCURegistrarEstado extends MappingDispatchAction {
         ActionMessages errores = new ActionMessages();
         
         switch (resultado) {
-            
+        
             case 0:
                 
                 return mapping.findForward("exito");

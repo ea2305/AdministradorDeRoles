@@ -55,7 +55,7 @@ public final class MCURegistrarLugar
             }
             return (mapping.findForward("exito"));
         } else {
-            log.error("OcurriÃ³ un error de infraestructura");
+            log.error("Ocurrió un error de infraestructura");
             errores.add(ActionMessages.GLOBAL_MESSAGE,
                         new ActionMessage("errors.infraestructura"));                
             saveErrors(request, errores);
