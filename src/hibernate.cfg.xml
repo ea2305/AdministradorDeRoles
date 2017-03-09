@@ -17,9 +17,9 @@
         <!-- Propiedades para MySQL (remoto)  -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bdscec?zeroDateTimeBehavior=convertToNull</property>
-        <property name="hibernate.connection.username">vaksfk</property>
-        <property name="hibernate.connection.password">jaqart_</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bdcec?zeroDateTimeBehavior=convertToNull</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
         <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
         <property name="hibernate.current_session_context_class">thread</property>

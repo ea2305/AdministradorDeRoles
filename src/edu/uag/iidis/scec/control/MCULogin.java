@@ -42,11 +42,11 @@ public final class MCULogin
         ManejadorLogin mr = new ManejadorLogin();
 
         Collection resultado = mr.buscarLogin(forma.getUser(),forma.getPassword());
-		//User user = new User("Victor", "1234");
+        //User user = new User("Victor", "1234");
 
-// simulamos que no se autentico	
+        // simulamos que no se autentico	
 
-	   //request.getSession().setAttribute("user", user);
+        //request.getSession().setAttribute("user", user);
         User user = null;
         if (resultado.size() != 0) {
             if ( resultado.isEmpty()) {
