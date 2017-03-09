@@ -1,12 +1,79 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/* global google */
+
+var app = angular.module('homeApp', []);
+
+app.controller('HomeController', function ($scope, $http) {
+    
+    $scope.states = [];
+    $scope.places = [];
+    
+    $('.carousel').carousel();
+    $('.slider').slider();
+    
+    $.ajax({
+        type: 'GET',
+        url: 'EstadoServlet.unfiltered',
+        data: {
+            action: "getEstados"
+        },
+        success: function (data) {
+            
+            $scope.states = data;
+            
+            $scope.$apply();
+            
+            $("select").material_select();
+            
+            $scope.fixSelect();
+        }
+    });
+    
+    $scope.update = function() {
+        
+        var state = $scope.selectedItem;
+        
+        $scope.fixSelect();
+        
+        $.ajax({
+            type: 'GET',
+            url: 'EstadoServlet.unfiltered',
+            data: {
+                action: "getLugares",
+                name: state.nombre
+            },
+            success: function (data) {
+                
+                $("#slider").html("");
+                $("#slider").html(data);
+                
+                $scope.fixSlider();
+                
+            }
+
+        });
+        
+    };
+    
+    $scope.fixSelect = function () {
+        
+        $("select").material_select("destroy");
+        $("select").material_select();
+        
+    };
+    
+    $scope.fixSlider = function () {
+        
+        $('.slider').slider("destroy");
+        $('.slider').slider();
+        
+    };
+    
+    
+    
+});
 
 //Configuracion de estilos por Sanzzy maps :)
-var custom_style = 
-[
+var custom_style = [
     {
         "featureType": "administrative",
         "elementType": "labels.text.fill",
@@ -151,16 +218,16 @@ var custom_style =
             }
         ]
     }
-]
+];
 
 function initMap() {
-    // Create a map object and specify the DOM element for display.
+    
     var map = new google.maps.Map(document.getElementById('home-map'), {
-      center: {lat: -34.397, lng: 150.644},
-      scrollwheel: false,
-      zoom: 8
+        center: {lat: -34.397, lng: 150.644},
+        scrollwheel: false,
+        zoom: 8
     });
     
-    //Configuracion de estilos personalizados
     map.setOptions( { styles : custom_style } );
+    
 }

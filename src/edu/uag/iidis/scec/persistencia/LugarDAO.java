@@ -324,14 +324,14 @@ public class LugarDAO {
 
         try {
  
-            String hql = "from Lugar where nombre = '"+nombreLugar+"'";
+            String hql = "from Lugar where estado = '"+nombreLugar+"'";
             
              if (log.isDebugEnabled()) {
-                 log.debug(hql + nombreLugar);
+                 log.debug(hql + " - " +  nombreLugar);
             }
         
-            Query query = HibernateUtil.getSession()
-                                        .createQuery(hql);
+            Query query = HibernateUtil.getSession().createQuery(hql);
+            
             if (log.isDebugEnabled()) {
                  log.debug("<<<<<<<<< create query ok " );
             }
