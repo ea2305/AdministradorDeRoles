@@ -89,6 +89,11 @@ table.barraBanner {
     height:45px;
     width:100%;								
 }
+
+.titleTable:hover{
+    color: blue;
+}
+
 a{
     text-decoration: none;
 }

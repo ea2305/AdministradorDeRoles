@@ -39,31 +39,31 @@
         <table class="responsive-table highlight">
             <thead>
                 <tr>
-                    <th data-field="nombre">
+                    <th id="nombre" class="titleTable selectable-card" data-field="nombre">
                         <fmt:message key="formaListadoLugares.etiqueta.nombre" />
                     </th>
-                    <th data-field="descripcion">
+                    <th id="descripcion" class="titleTable selectable-card" data-field="descripcion">
                         <fmt:message key="formaListadoLugares.etiqueta.descripcion" />
                     </th>
-                    <th data-field="poblacion">
+                    <th id="poblacion" class="titleTable selectable-card" data-field="poblacion">
                         <fmt:message key="formaListadoLugares.etiqueta.poblacion" />
                     </th>
-                    <th data-field="coordenadas">
+                    <th id="coordenadas" class="titleTable selectable-card" data-field="coordenadas">
                         <fmt:message key="formaListadoLugares.etiqueta.coordenadas" />
                     </th>
-                    <th data-field="estado">
+                    <th id="estado" class="titleTable selectable-card" data-field="estado">
                         <fmt:message key="formaListadoLugares.etiqueta.estado" />
                     </th>
-                    <th data-field="pais">
+                    <th id="pais" class="titleTable selectable-card" data-field="pais">
                         <fmt:message key="formaListadoLugares.etiqueta.pais" />
                     </th>
-                    <th data-field="moneda">
+                    <th id="moneda" class="titleTable selectable-card" data-field="moneda">
                         <fmt:message key="formaListadoLugares.etiqueta.moneda" />
                     </th>
                 </tr>
             </thead>
 
-        <tbody>
+        <tbody id="contentTable">
             <c:forEach var="lugar" items="${formaListadoLugares.lugares}">
                 <tr id="${lugar.id}" class="row-item">
                     <td id="${lugar.id}-nombre">
@@ -168,7 +168,7 @@
                 <!-- Visulaización de mapa -->
                 <div class="col s12 m12 l12 center frame-map">
 
-                    <div id="map" style="height: 500px; width:93%"></div>
+                    <div id="mapModal" style="height: 500px; width:93%"></div>
 
                 </div>
             </div>

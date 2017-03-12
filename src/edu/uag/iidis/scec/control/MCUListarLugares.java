@@ -70,7 +70,10 @@ public final class MCUListarLugares
         }
 
     }
-	 public ActionForward buscarLugar(
+    
+    
+    //FunciÛn para la obtencion de datos del servidor via ajax
+    public ActionForward buscarLugar(
                 ActionMapping mapping,
                 ActionForm form,
                 HttpServletRequest request,
@@ -89,9 +92,12 @@ public final class MCUListarLugares
             return (mapping.findForward("cancelar"));
         }
 
+        //Obtenemos los datos que fueron enviados por data de AJAX
         FormaListadoLugares forma = (FormaListadoLugares)form;
 
         ManejadorLugares mr = new ManejadorLugares();
+        
+        //Buscamos elementos por nombre
         Collection resultado = mr.listarLugaresPorNombre(forma.getNombre());
 
         ActionMessages errores = new ActionMessages();
@@ -113,8 +119,61 @@ public final class MCUListarLugares
         }
 
     }
+    
+    //FunciÛn para la obtencion de datos del servidor via ajax
+    public ActionForward ordenarPor(
+                ActionMapping mapping,
+                ActionForm form,
+                HttpServletRequest request,
+                HttpServletResponse response)
+            throws Exception {
 
-    //cambios
+        if (log.isDebugEnabled()) {
+            log.debug(">solicitarListarLugares");
+        }
+
+        // Verifica si la acci√≥n fue cancelada por el usuario
+        if (isCancelled(request)) {
+            if (log.isDebugEnabled()) {
+                log.debug("<La acci√≥n fue cancelada");
+            }
+            return (mapping.findForward("cancelar"));
+        }
+
+        //Obtenemos los datos que fueron enviados por data de AJAX
+        FormaListadoLugares forma = (FormaListadoLugares)form;
+
+        ManejadorLugares mr = new ManejadorLugares();
+        if (log.isDebugEnabled()) {
+                log.debug(forma.getNombre());
+            }
+        //Buscamos elementos por nombre
+        Collection resultado = mr.oredenarPor(forma.getNombre());//Utilizamos 
+                            //Campo de nombre para evitar m·s modiicaciones
+
+        ActionMessages errores = new ActionMessages();
+        if (resultado != null) {
+            if ( resultado.isEmpty() ) {
+                if (log.isDebugEnabled()) {
+                    log.debug(resultado.toString());
+                }
+                errores.add(ActionMessages.GLOBAL_MESSAGE,
+                    new ActionMessage("errors.registroVacio"));
+                saveErrors(request, errores);
+            } else {
+                forma.setLugares(resultado);
+            }
+            return (mapping.findForward("exito"));
+        } else {
+            log.error("Ocurri√≥ un error de infraestructura");
+            errores.add(ActionMessages.GLOBAL_MESSAGE,
+                        new ActionMessage("errors.infraestructura"));                
+            saveErrors(request, errores);
+            return ( mapping.findForward("fracaso") );
+        }
+
+    }
+
     public ActionForward buscarImagen(
                 ActionMapping mapping,
                 ActionForm form,
@@ -150,7 +209,7 @@ public final class MCUListarLugares
             }
             return (mapping.findForward("exito"));
         } else {
-            log.error("Ocurri√≥ un error de infraestructura");
+            log.error("OcurriÛ un error de infraestructura");
             errores.add(ActionMessages.GLOBAL_MESSAGE,
                         new ActionMessage("errors.infraestructura"));                
             saveErrors(request, errores);
@@ -173,7 +232,7 @@ public final class MCUListarLugares
         // Verifica si la acci√≥n fue cancelada por el usuario
         if (isCancelled(request)) {
             if (log.isDebugEnabled()) {
-                log.debug("<La acci√≥n fue cancelada");
+                log.debug("<La acciÛn fue cancelada");
             }
             return (mapping.findForward("cancelar"));
         }
@@ -194,7 +253,7 @@ public final class MCUListarLugares
             }
             return (mapping.findForward("exito"));
         } else {
-            log.error("Ocurri√≥ un error de infraestructura");
+            log.error("OcurriÛ un error de infraestructura");
             errores.add(ActionMessages.GLOBAL_MESSAGE,
                         new ActionMessage("errors.infraestructura"));                
             saveErrors(request, errores);

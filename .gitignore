@@ -8,7 +8,7 @@ build/
 nbproject/
 
 #Configuracion de hibernate
-hibernate.cfg.xml:
+*.cfg.xml:
 
 #Archivo de configuracion
 build.xml

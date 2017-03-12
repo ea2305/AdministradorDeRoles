@@ -91,6 +91,26 @@ import org.w3c.dom.NodeList;
         }
     }
 	
+    public Collection oredenarPor(String parametro) {
+        Collection resultado;
+
+        if (log.isDebugEnabled()) {
+            log.debug(">guardarUsuario(usuario)");
+        }
+
+        try {
+            HibernateUtil.beginTransaction();
+            resultado = lugarDAO.oredenarPor(parametro);
+            HibernateUtil.commitTransaction();
+            return resultado;         
+        } catch (ExcepcionInfraestructura e) {
+            HibernateUtil.rollbackTransaction();
+            return null;
+        } finally {
+            HibernateUtil.closeSession();
+        }
+    }
+    
     public void eliminarLugar(Long id) {
         
         if (log.isDebugEnabled()) {

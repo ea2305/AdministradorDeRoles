@@ -472,6 +472,17 @@
             <forward name="exito" path="/WEB-INF/vista/pantallas/BuscarLugar.jsp"/>
             <forward name="fracaso" path="/WEB-INF/vista/pantallas/pantallaInicio.jsp"/>
         </action>
+        
+        
+        <action path="/ordernarListaPor"
+                type="edu.uag.iidis.scec.control.MCUListarLugares"
+                parameter="ordenarPor"
+                name="formaListadoLugares"
+                scope="request"
+                validate="false">
+            <forward name="exito" path="/WEB-INF/vista/pantallas/listaOrdenada.jsp"/>
+            <forward name="fracaso" path="/WEB-INF/vista/pantallas/pantallaInicio.jsp"/>
+        </action>
 
         <!--RECOMENDACIONES -->
 
