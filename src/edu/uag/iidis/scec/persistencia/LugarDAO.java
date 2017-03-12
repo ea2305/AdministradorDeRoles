@@ -324,14 +324,56 @@ public class LugarDAO {
 
         try {
  
-            String hql = "from Lugar where nombre = '"+nombreLugar+"'";
+            String hql = "from Lugar where estado = '"+nombreLugar+"'";
             
              if (log.isDebugEnabled()) {
-                 log.debug(hql + nombreLugar);
+                 log.debug(hql + " - " +  nombreLugar);
             }
         
-            Query query = HibernateUtil.getSession()
-                                        .createQuery(hql);
+            Query query = HibernateUtil.getSession().createQuery(hql);
+            
+            if (log.isDebugEnabled()) {
+                 log.debug("<<<<<<<<< create query ok " );
+            }
+            if (log.isDebugEnabled()) {
+                 log.debug("<<<<<<<<< set Parameter ok antes del query list >>>>>");
+            }
+            List results = query.list();
+            int resultado = results.size();
+            if (log.isDebugEnabled()) {
+                 log.debug("<<<<<<<<< Result size " + resultado);
+            }
+            if (resultado == 0) {
+               return results;
+            }
+            
+            return results;
+
+        } catch (HibernateException ex) {
+            if (log.isWarnEnabled()) {
+                log.warn("<HibernateException *******************");
+            }
+            throw new ExcepcionInfraestructura(ex);
+        }
+    }
+    
+    public Collection oredenarPor(String parametro)
+            throws ExcepcionInfraestructura {
+
+        if (log.isDebugEnabled()) {
+            log.debug(">existeRol(nombreRol)");
+        }
+
+        try {
+ 
+            String hql = "from Lugar order by " + parametro + "";
+            
+             if (log.isDebugEnabled()) {
+                 log.debug(hql + " - " +  parametro);
+            }
+        
+            Query query = HibernateUtil.getSession().createQuery(hql);
+            
             if (log.isDebugEnabled()) {
                  log.debug("<<<<<<<<< create query ok " );
             }

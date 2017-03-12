@@ -5,6 +5,14 @@
 <struts>
     <include file="example.xml"/>
     <!-- Configuration for the default package. -->
+    
+    <constant name="struts.action.excludePattern" value=".*unfiltered.*,.*\\.nofilter"/>
+    
+    <constant name="struts.action.excludePattern" value="/EstadoServlet*"/>
+    
     <package name="default" extends="struts-default">
+        
+        
     </package>
+    
 </struts>
