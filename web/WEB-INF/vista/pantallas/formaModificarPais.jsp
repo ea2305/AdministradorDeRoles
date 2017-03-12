@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="card-content">
-                    <input name="id" value="${formaModificarPais.id}"/>
+                    <input name="id" value="${formaModificarPais.id}" style="display:none"/>
 
                     <div class="input-field">
                         <input type="text" 

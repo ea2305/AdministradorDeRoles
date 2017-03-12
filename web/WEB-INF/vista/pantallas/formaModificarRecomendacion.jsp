@@ -21,42 +21,12 @@
             </div>
 
             <form   id="forma" 
-                    action="procesarRegistroRecomendacion.do" 
+                    action="procesarModificarRecomendacion.do" 
                     method="post"
                     class="col s12 m12 l12">
 
                 <section class="col s12 m8 l8">
-                    <div class="input-field">
-                        <label for="lugar">
-                            <fmt:message key="formaNuevoRecomendacion.etiqueta.buscar" />
-                        </label>
-
-                        <input type="text" 
-                                id="buscar"
-                                size="50" 
-                                maxlength="100"
-                                onkeyup="buscar_lugar()"/>
-                    </div>
-
-                    <label for="lugar">
-                        <fmt:message key="formaNuevoRecomendacion.etiqueta.nombre" />
-                    </label>
-                    <select     id ="lugar"
-                                required
-                                class="browser-default"
-                                name="nombre" 
-                                value="${formaModificarLugar.nombre}"
-                                onchange="select_lugar()">
-
-                        <option value="" disabled selected hidden>Seleccione un lugar</option>
-
-                        <c:forEach var="lugar" items="${formaModificarLugar.lugares}">
-
-                            <option value'<c:out value="${lugar.nombre}"/>'><c:out value="${lugar.nombre}"/></option>
-
-                        </c:forEach>
-                    </select> 
-
+                    
                     <div class="input-field">
                         <label id="label-estado" for="estado">
                             <fmt:message key="formaNuevoRecomendacion.etiqueta.estado" />
@@ -67,7 +37,7 @@
                                 name="estado" 
                                 size="50" 
                                 maxlength="100" 
-                                value="${formaModificarLugar.estado}" 
+                                value="${formaModificarRecomendacion.estado}" 
                                 readonly/>
                     </div>
 
@@ -79,7 +49,7 @@
                         <input type="date" 
                                 class="datepicker"
                                 name="fecha" 
-                                value="${formaModificarLugar.fecha}" 
+                                value="${formaModificarRecomendacion.fecha}" 
                                 min="2000-01-02"/>
                     </div>
 
@@ -92,7 +62,7 @@
                                 name="comentario" 
                                 size="50" 
                                 maxlength="100" 
-                                value="${formaModificarLugar.comentario}" />
+                                value="${formaModificarRecomendacion.comentario}" />
                         </td>
                     </div>
 
@@ -118,21 +88,7 @@
                 <div class="card-action col s12 m12 l12">
                     <button class="btn waves-effect waves-light green" 
                             type="submit" name="submit">
-                        Agregar y terminar
-                        <i class="material-icons right">place</i>
-                    </button>
-                    <button class="btn waves-effect waves-light green" 
-                            type="submit" 
-                            name="submit"
-                            onclick="forma.action='procesarRegistroRecomendacion.do?volver=si'">
-                        Agregar y volver
-                        <i class="material-icons right">place</i>
-                    </button>
-                    <button class="btn waves-effect waves-light black" 
-                            type="button" 
-                            name="submit"
-                            onclick="location.href='solicitarRegistroRecomendacion.do'" />
-                        Reset
+                        Actualizar y terminar
                         <i class="material-icons right">place</i>
                     </button>
                     <button class="btn waves-effect waves-light red" 

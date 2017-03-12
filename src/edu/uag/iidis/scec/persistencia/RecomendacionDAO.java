@@ -239,6 +239,37 @@ public class RecomendacionDAO {
             throw new ExcepcionInfraestructura(ex);
         }
     }
+    
+    
+    public boolean modificar( Recomendacion recomendacion ) throws ExcepcionInfraestructura {
+        
+        boolean toReturn = false;
+        
+        if (this.log.isDebugEnabled()) {
+            
+            this.log.debug(">modificar(estado)");
+            
+        }
+        
+        try {
+            
+            System.out.println(recomendacion.toString());
+            
+            HibernateUtil.getSession().saveOrUpdate(recomendacion);
+            
+            toReturn = true;
+            
+        } catch (HibernateException ex) {
+            
+            if (this.log.isWarnEnabled()) {
+                
+                this.log.warn("<HibernateException");
+            }
+            throw new ExcepcionInfraestructura(ex);
+        }
+        
+        return toReturn;
+    }
 
 
 }

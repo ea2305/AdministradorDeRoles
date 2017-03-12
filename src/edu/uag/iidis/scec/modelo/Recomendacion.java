@@ -8,7 +8,7 @@ import java.util.Date;
  * 
  *  
  *
- * <p><a href="calificacion.java.html"><i>Ver cÃ³digo fuente</i></a></p>
+ * <p><a href="calificacion.java.html"><i>Ver código fuente</i></a></p>
  *
  * @author <a href="mailto:vramos@uag.mx">Victor Ramos</a>
  * @version 1.0
@@ -20,9 +20,9 @@ public class Recomendacion extends ClaseBase
     private String nombre;
     private String estado;
     private String usuario;
-	private String fecha;
-	private String comentario;
-	private Long calificacion;
+    private String fecha;
+    private String comentario;
+    private Long calificacion;
 
 
     public Recomendacion() {
@@ -36,9 +36,9 @@ public class Recomendacion extends ClaseBase
         this.nombre=nombre;
         this.estado=estado;
         this.usuario=usuario;
-		this.fecha=fecha;
-		this.comentario=comentario;
-		this.calificacion=calificacion;
+        this.fecha=fecha;
+        this.comentario=comentario;
+        this.calificacion=calificacion;
     }
 
     /**

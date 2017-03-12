@@ -26,13 +26,13 @@ function chooseCard( event ){
     console.log( event.currentTarget.id );
 
     //Obtenemos datos de cada comentario
-    var nombre     = $("#nombre-" + id).html(),
+    var nombre     = $("#nombre-" + id).text(),
         estado     = $("#estado-" + id).html(),
         usuario    = $("#usuario-" + id).html(),
         fecha      = $("#fecha-" + id).html(),
         comentario = $("#comentario-" + id).html(),
         calificacion = $("#calificacion-" + id).val();
-
+        console.log(nombre.trim());
         //Insertamos los datos a cada contenedor de muestra
         $("#nombre-id").html( nombre );
         $("#estado-id").html( estado );
@@ -48,13 +48,22 @@ function chooseCard( event ){
         //Agregamos acciones de comentario
         console.log('add comment');
         $('#actions-list').empty();
-        $('#actions-list').html( getTemplateActions( id , nombre) );
+        $('#actions-list').html( getTemplateActions( 
+            id , 
+            nombre.trim() , 
+            estado , 
+            usuario , 
+            fecha.trim() , 
+            comentario.trim() , 
+            calificacion) 
+        );
         
 }
 
-function getTemplateActions( id , nombre ){
+function getTemplateActions( id , nombre , estado , usuario , fecha , comentario , calificacion ){
     return "<a class='btn waves-effect waves-light blue'" + 
-        "href='solicitarModificarRecomendacion.do?id=" + id + "'>" + 
+        "href='solicitarModificarRecomendacion.do?id=" + id + "&nombre="+nombre+"&estado="+estado+
+        "&usuario="+usuario+"&fecha="+fecha+"&comentario="+comentario+"&calificacion="+calificacion+"'>" + 
         "Modificar" +
     "</a>" + 
     "<a id='listener-info' href='procesarEliminarRecomendacion.do?id=" + id + "'" +

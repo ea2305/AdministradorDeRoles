@@ -20,6 +20,10 @@
     margin-top: 1rem;
 }
 
+.strong{
+    font-weight: bold;
+}
+
 .home-body{
     height: 100vh;
 }

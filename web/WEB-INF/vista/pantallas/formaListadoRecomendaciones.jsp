@@ -45,8 +45,8 @@
                         
                             <div class="card-content">
 
-                                <div id="nombre-${recomendacion.id}" class="card-title">
-                                    <strong>${recomendacion.nombre}</strong>
+                                <div id="nombre-${recomendacion.id}" class="card-title strong">
+                                    ${recomendacion.nombre}
                                 </div>
 
                                 <lable id="fecha-${recomendacion.id}">
@@ -58,6 +58,9 @@
                                 </div>
                             </div>
                             
+                            <div id="estado-${recomendacion.id}" style="display:none">${recomendacion.estado}</div>
+                            <div id="usuario-${recomendacion.id}" style="display:none">${recomendacion.usuario}</div>
+                                
                         </div>
                         
                         <!--div class="card-action">

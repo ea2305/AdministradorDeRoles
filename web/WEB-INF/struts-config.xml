@@ -41,6 +41,10 @@
         <form-bean name="formaEliminarLugar"
                    type="edu.uag.iidis.scec.vista.FormaEliminarLugar">
         </form-bean>
+        
+        <form-bean name="formaEliminarRecomendacion"
+                   type="edu.uag.iidis.scec.vista.FormaEliminarRecomendacion">
+        </form-bean>
 
         <form-bean name="formaNuevoPais"
                    type="edu.uag.iidis.scec.vista.FormaNuevoPais">
@@ -92,6 +96,10 @@
         
         <form-bean name="formaModificarEstado"
            type="edu.uag.iidis.scec.vista.FormaModificarEstado">
+        </form-bean>
+        
+        <form-bean name="formaModificarRecomendacion"
+           type="edu.uag.iidis.scec.vista.FormaModificarRecomendacion">
         </form-bean>
         
         <form-bean name="formaModificarLugar"
@@ -263,6 +271,15 @@
             <forward name="exito" path="/solicitarListarPaises.do" redirect="true"/>
         </action>
         
+        <action path="/procesarEliminarRecomendacion"
+                type="edu.uag.iidis.scec.control.MCUEliminarRecomendacion"
+                parameter="procesarEliminarRecomendacion"
+                name="formaEliminarRecomendacion"
+                scope="request"
+                validate="false">
+            <forward name="exito" path="/solicitarListarRecomendaciones.do" redirect="true"/>
+        </action>
+        
         <action path="/solicitarRegistroRol"
                 type="edu.uag.iidis.scec.control.MCURegistrarRol"
                 parameter="solicitarRegistroRol"
@@ -288,6 +305,15 @@
                 scope="request"
                 validate="true">
             <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarEstado.jsp"/>
+        </action>
+        
+        <action path="/solicitarModificarRecomendacion"
+                type="edu.uag.iidis.scec.control.MCUModificarRecomendacion"
+                parameter="solicitarModificarRecomendacion"
+                name="formaModificarRecomendacion"
+                scope="request"
+                validate="true">
+            <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarRecomendacion.jsp"/>
         </action>
         
         <action path="/solicitarModificarLugar"
@@ -411,6 +437,16 @@
             <forward name="exito" path="/solicitarListarPaises.do"/>
        </action>
        
+       <action path="/procesarModificarRecomendacion"
+                type="edu.uag.iidis.scec.control.MCUModificarRecomendacion"
+                parameter="procesarModificarRecomendacion"
+                name="formaModificarRecomendacion"
+                scope="request"
+                validate="true"
+                input="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaModificarRecomendacion.jsp" >
+            <forward name="exito" path="/solicitarListarRecomendaciones.do"/>
+       </action>
+       
        <action path="/procesarModificarRol"
                 type="edu.uag.iidis.scec.control.MCUModificarRol"
                 parameter="procesarModificarRol"
@@ -481,7 +517,7 @@
                 scope="request"
                 validate="false">
             <forward name="exito" path="/WEB-INF/vista/pantallas/listaOrdenada.jsp"/>
-            <forward name="fracaso" path="/WEB-INF/vista/pantallas/pantallaInicio.jsp"/>
+            <forward name="fracaso" path="/WEB-INF/vista/pantallas/errorRequest.jsp"/>
         </action>
 
         <!--RECOMENDACIONES -->
