@@ -519,6 +519,16 @@
             <forward name="exito" path="/WEB-INF/vista/pantallas/listaOrdenada.jsp"/>
             <forward name="fracaso" path="/WEB-INF/vista/pantallas/errorRequest.jsp"/>
         </action>
+        
+        <action path="/recomendacionesPor"
+                type="edu.uag.iidis.scec.control.MCUListarRecomendaciones"
+                parameter="buscarRecomendacion"
+                name="formaListadoRecomendaciones"
+                scope="request"
+                validate="false">
+            <forward name="exito" path="/WEB-INF/vista/json/jsonRecomendaciones.jsp"/>
+            <forward name="fracaso" path="/WEB-INF/vista/pantallas/errorRequest.jsp"/>
+        </action>
 
         <!--RECOMENDACIONES -->
 

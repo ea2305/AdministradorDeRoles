@@ -68,6 +68,7 @@ public final class MCUListarRecomendaciones
             return ( mapping.findForward("fracaso") );
         }
     }
+    
     public ActionForward buscarRecomendacion(
                 ActionMapping mapping,
                 ActionForm form,

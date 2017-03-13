@@ -1,7 +1,8 @@
 var myLatLng,
     mapload = false,
     map,
-    marker;
+    marker,
+    chart;
     
 $(document).ready(function(){
 
@@ -14,7 +15,8 @@ $(document).ready(function(){
     $('.modal').modal();
     $('.titleTable').click( titleClick );
 
-    
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawMultSeries);
 
 });
 //FunciÃ³n de verificaciÃ³n
@@ -50,7 +52,8 @@ function titleClick( event ){
 function rowClick( event ){
     
     var id = event.currentTarget.id;
-    console.log( id )
+    var nombre = $('#' + id + '-nombre').text().trim();
+    console.log( id );
     
     var coord = $('#' + id + '-coordenadas')
                                     .text()
@@ -65,7 +68,7 @@ function rowClick( event ){
             $('#' + id + '-pais').html().trim()
     );
     $('#modal-estado').html( $('#' + id + '-estado').html().trim() );
-    $('#modal-nombre').html( $('#' + id + '-nombre').html().trim() );
+    $('#modal-nombre').html( nombre );
     $('#modal-poblacion').html("Población: " +  $('#' + id + '-poblacion').html().trim() );
     $('#modal-moneda').html( "Moneda: " + $('#' + id + '-moneda').html().trim() );
     $('#modal-descripcion').html( $('#' + id + '-descripcion').html().trim() );
@@ -92,11 +95,66 @@ function rowClick( event ){
         map.setCenter(myLatLng);
     }
     
+    getDataPlace( nombre );
     
 }
 
-function HacerMap( event ){
-    console.log( event )
+function drawMultSeries( data ) {
+    
+    var data = data || [["none",'data']];
+    
+    var data = google.visualization.arrayToDataTable( data );
+
+    var options = {
+      title: 'Impacto de lugar',
+      chartArea: {width: '100%'},
+      hAxis: {
+        title: 'Calificaciones totales',
+        minValue: 0
+      },
+      vAxis: {
+        title: 'Calificación'
+      }
+    };
+
+      chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+}
+
+function getDataPlace( place ){
+    
+    $.ajax({
+        method:'post',
+        url   :'recomendacionesPor.do',
+        data  :{
+            nombre: place 
+        },
+        success:function(res){
+            //console.log(res);
+            var data = JSON.parse( res );
+            var points = data.items.map( function(e){
+                return e.calificacion;
+            });
+            
+            var counts = {};
+            points.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+            var dataChart = [];
+            
+            //Title chart
+            dataChart.push( ['Puntaje', '2010 Population'] );
+            for (var property in counts) {
+                if (counts.hasOwnProperty(property)) {
+                    dataChart.push( [property,counts[property]] );
+                }
+            }
+            //console.log( dataChart )
+            drawMultSeries(dataChart);
+            
+        },
+        error  :function (err){
+            console.error(err);
+        }
+     })
     
 }
 

@@ -141,11 +141,7 @@
             <div class="col s12 m12 l12">
                 <div class="col s12 m6 l6">
                     <h5>Satisfaccion</h5>
-                    
-                    <!--
-                    Mapas
-                    -->
-                    
+                    <div id="chart_div"></div>
                 </div>
                 <div class="col s12 m6 l6">
                     <div class="card espacioCard">
@@ -181,5 +177,6 @@
 <!-- Mover scripts a un archivo propio -->
 <script src="js/jquery-3.1.1.js"></script>
 <script src="materialize/js/materialize.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="js/formaListadoLugares.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbSOVcUH2d9pQw4yuwCFE3ondsvj6vJko"></script>
