@@ -5,7 +5,6 @@ import org.hibernate.type.*;
 import org.hibernate.criterion.Example;
 //import org.hibernate.classic.*;
 
-
 import edu.uag.iidis.scec.excepciones.ExcepcionInfraestructura;
 import edu.uag.iidis.scec.modelo.Pais;
 import edu.uag.iidis.scec.persistencia.hibernate.HibernateUtil;
@@ -19,13 +18,12 @@ import java.util.List;
 public class PaisDAO {
 
     private Log log = LogFactory.getLog(PaisDAO.class);
-
+    
     public PaisDAO() {
     }
 
-
-    public Pais buscarPorId(Long idPais, boolean bloquear)
-            throws ExcepcionInfraestructura {
+    public Pais buscarPorId(Long idPais, boolean bloquear){
+//            throws ExcepcionInfraestructura {
 
         Pais pais = null;
 
@@ -48,8 +46,6 @@ public class PaisDAO {
             if (log.isWarnEnabled()) {
                 log.warn("<HibernateException");
             }
-
-            throw new ExcepcionInfraestructura(ex);
         }
         return pais;
     }
@@ -106,6 +102,7 @@ public class PaisDAO {
             }
             throw new ExcepcionInfraestructura(e);
         }
+        
         return paises;
     }
 
@@ -177,19 +174,6 @@ public class PaisDAO {
         }
 
         try {
-            
-            
-//            String consultaCuentaRoles =
-//            "select count(*) from Ciudad r where r.nombre=?";
-//
- //           int resultado =
- //           ((Integer) HibernateUtil.getSession()
- //                          .find(consultaCuentaRoles, 
- //                                nombreRol,
- //                                StringType.INSTANCE)
- //                          .iterator()
- //                          .next()).intValue();
-// de acuerdo al nuevo formato
  
             String hql = "select nombre from Pais where nombre = :nombre";
             
@@ -226,5 +210,10 @@ public class PaisDAO {
         }
     }
 
-
+    public int truncar() {
+        Query query = HibernateUtil.getSession().createSQLQuery(
+                "truncate table pais"
+        );
+        return query.executeUpdate();
+    }
 }

@@ -23,9 +23,8 @@ public class RolDAO {
     public RolDAO() {
     }
 
-
-    public Rol buscarPorId(Long idRol, boolean bloquear)
-            throws ExcepcionInfraestructura {
+    public Rol buscarPorId(Long idRol, boolean bloquear){
+//            throws ExcepcionInfraestructura {
 
         Rol rol = null;
 
@@ -48,8 +47,7 @@ public class RolDAO {
             if (log.isWarnEnabled()) {
                 log.warn("<HibernateException");
             }
-
-            throw new ExcepcionInfraestructura(ex);
+//            throw new ExcepcionInfraestructura(ex);
         }
         return rol;
     }
@@ -225,5 +223,11 @@ public class RolDAO {
         return toReturn;
     }
 
+    public int truncar() {
+        Query query = HibernateUtil.getSession().createSQLQuery(
+                "truncate table roles"
+        );
+        return query.executeUpdate();
+    }
 
 }

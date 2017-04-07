@@ -5,7 +5,6 @@ import org.hibernate.type.*;
 import org.hibernate.criterion.Example;
 //import org.hibernate.classic.*;
 
-
 import edu.uag.iidis.scec.excepciones.ExcepcionInfraestructura;
 import edu.uag.iidis.scec.modelo.Recomendacion;
 import edu.uag.iidis.scec.persistencia.hibernate.HibernateUtil;
@@ -24,8 +23,8 @@ public class RecomendacionDAO {
     }
 
 
-    public Recomendacion buscarPorId(Long idRecomendacion, boolean bloquear)
-            throws ExcepcionInfraestructura {
+    public Recomendacion buscarPorId(Long idRecomendacion, boolean bloquear){
+//            throws ExcepcionInfraestructura {
 
         Recomendacion recomendacion = null;
 
@@ -48,8 +47,6 @@ public class RecomendacionDAO {
             if (log.isWarnEnabled()) {
                 log.warn("<HibernateException");
             }
-
-            throw new ExcepcionInfraestructura(ex);
         }
         return recomendacion;
     }
@@ -271,5 +268,11 @@ public class RecomendacionDAO {
         return toReturn;
     }
 
+    public int truncar() {
+        Query query = HibernateUtil.getSession().createSQLQuery(
+                "truncate table recomendaciones"
+        );
+        return query.executeUpdate();
+    }
 
 }

@@ -36,6 +36,9 @@ public class ManejadorLogin {
             HibernateUtil.commitTransaction();
             return resultado;         
         } catch (ExcepcionInfraestructura e) {
+            
+            System.out.println("Error: " + e.toString());
+            
             HibernateUtil.rollbackTransaction();
             return null;
         } finally {

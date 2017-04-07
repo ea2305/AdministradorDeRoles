@@ -18,7 +18,6 @@ public class ManejadorCiudades {
         dao = new CiudadDAO();
     }
 
-
     public Collection listarCiudades() {
         Collection resultado;
 
@@ -58,7 +57,6 @@ public class ManejadorCiudades {
         } finally {
             HibernateUtil.closeSession();
         }
-
     }
 
     public int crearCiudad(Ciudad ciudad) {

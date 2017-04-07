@@ -20,7 +20,6 @@ public class Usuario extends Persona {
     protected Credencial credencial;
     protected List roles = new ArrayList();
 
-
     public Usuario(){
     }
 
@@ -29,7 +28,6 @@ public class Usuario extends Persona {
         super(nombre);
         this.credencial=credencial;
     }
-
 
     /**
      * Regresa el identificador del usuario.
@@ -47,7 +45,6 @@ public class Usuario extends Persona {
         this.credencial = credencial;
     }
 
-
     /**
      * Regresa los roles a los que pertenece el usuario.
      * @return List
@@ -56,7 +53,6 @@ public class Usuario extends Persona {
         return roles;
     }
 
-
     /**
      * Establece los roles del usuario
      * @param roles
@@ -64,7 +60,6 @@ public class Usuario extends Persona {
     public void setRoles(List roles) {
         this.roles = roles;
     }
-
 
     /**
      * Agrega un rol para el usuario
@@ -76,7 +71,6 @@ public class Usuario extends Persona {
             rol.getUsuarios().add(this);
         }
     }
-
     
     public void removeRol(Rol rol) {
         roles.remove(rol);

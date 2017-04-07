@@ -26,6 +26,8 @@
         <property name="hibernate.cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
         <property name="hibernate.show_sql">true</property>
         <!--<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>-->
+        <!--wea de Cordero-->
+        <property name="javax.persistence.validation.mode">none</property>
         
         <mapping resource="edu/uag/iidis/scec/modelo/Usuario.hbm.xml"/>
         <mapping resource="edu/uag/iidis/scec/modelo/Rol.hbm.xml"/>

@@ -217,4 +217,11 @@ public class UsuarioDAO {
         }
     }
 
+    public int truncar() {
+        Query query = HibernateUtil.getSession().createSQLQuery(
+                "truncate table usuarios"
+        );
+        return query.executeUpdate();
+    }
+
 }

@@ -132,44 +132,25 @@ public class ManejadorEstados {
     }
     
     public boolean modificarEstado(Estado estado) {
-        
         boolean toReturn = false;
-
         if (this.log.isDebugEnabled()) {
-            
             this.log.debug(">guardarEstado(estado)");
-            
         }
-        
         try {
-            
             HibernateUtil.beginTransaction();
-            
 //            Estado estadoByID = this.estadoDAO.buscarPorId(estado.getId(), true);
-//            
 //            estadoByID.setNombre(estado.getNombre());
 //            estadoByID.setDescripcion(estado.getDescripcion());
-            
             toReturn = this.estadoDAO.modificar(estado);
-
             HibernateUtil.commitTransaction();
-            
         } catch (ExcepcionInfraestructura ex) {
-            
             HibernateUtil.rollbackTransaction();
-
             if (this.log.isWarnEnabled()) {
-                
                 this.log.warn("< ExcepcionInfraestructura");
-                
             }
-            
         } finally {
-            
             HibernateUtil.closeSession();
-            
         }
-        
         return toReturn;
     }
 

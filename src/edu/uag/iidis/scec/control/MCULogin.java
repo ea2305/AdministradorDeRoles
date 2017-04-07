@@ -48,7 +48,7 @@ public final class MCULogin
 
         //request.getSession().setAttribute("user", user);
         User user = null;
-        if (resultado.size() != 0) {
+        if (!resultado.isEmpty()) {
             if ( resultado.isEmpty()) {
                 errores.add(ActionMessages.GLOBAL_MESSAGE,
                     new ActionMessage("errors.registroVacio"));

@@ -21,7 +21,7 @@ $(document).ready(function(){
 });
 //FunciÃ³n de verificaciÃ³n
 function EliminarLugar(strLugarName){
-    return confirm("¿Desea eliminar el estado '" + strLugarName + "'?");
+    return confirm("Desea eliminar el estado '" + strLugarName + "'?");
 }
 
 function titleClick( event ){
@@ -69,7 +69,7 @@ function rowClick( event ){
     );
     $('#modal-estado').html( $('#' + id + '-estado').html().trim() );
     $('#modal-nombre').html( nombre );
-    $('#modal-poblacion').html("Población: " +  $('#' + id + '-poblacion').html().trim() );
+    $('#modal-poblacion').html("Poblaci?: " +  $('#' + id + '-poblacion').html().trim() );
     $('#modal-moneda').html( "Moneda: " + $('#' + id + '-moneda').html().trim() );
     $('#modal-descripcion').html( $('#' + id + '-descripcion').html().trim() );
     
@@ -113,7 +113,7 @@ function drawMultSeries( data ) {
         minValue: 0
       },
       vAxis: {
-        title: 'Calificación'
+        title: 'Calificaci?'
       }
     };
 

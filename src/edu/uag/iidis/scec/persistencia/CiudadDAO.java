@@ -24,8 +24,8 @@ public class CiudadDAO {
     }
 
 
-    public Ciudad buscarPorId(Long idCiudad, boolean bloquear)
-            throws ExcepcionInfraestructura {
+    public Ciudad buscarPorId(Long idCiudad, boolean bloquear){
+//            throws ExcepcionInfraestructura {
 
         Ciudad ciudad = null;
 
@@ -48,12 +48,10 @@ public class CiudadDAO {
             if (log.isWarnEnabled()) {
                 log.warn("<HibernateException");
             }
-
-            throw new ExcepcionInfraestructura(ex);
+//            throw new ExcepcionInfraestructura(ex);
         }
         return ciudad;
     }
-
 
     public Collection buscarTodos()
             throws ExcepcionInfraestructura {
@@ -196,5 +194,10 @@ public class CiudadDAO {
         }
     }
 
-
+    public int truncar() {
+        Query query = HibernateUtil.getSession().createSQLQuery(
+                "truncate table ciudades"
+        );
+        return query.executeUpdate();
+    }
 }

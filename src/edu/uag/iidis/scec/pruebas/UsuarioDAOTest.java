@@ -31,10 +31,7 @@ public class UsuarioDAOTest extends TestCase {
 
     public void testCrearUsuario() throws Exception {
         Usuario usuario = new Usuario(
-                    new NombrePersona("Ing.",
-                                      "Gonzalo",
-                                      "Osuna", "Millán", 
-                                      "", "gom"),
+                    new NombrePersona("Ing.","Gonzalo","Osuna", "Millán", "", "gom"),
                     new Credencial("gosuna","123"));
         try {
             HibernateUtil.beginTransaction();

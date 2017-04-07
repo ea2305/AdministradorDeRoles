@@ -50,14 +50,13 @@ public class LoginDAO {
                  log.debug("<<<<<<<<< set Parameter ok antes del query list >>>>>");
             }
             List results = query.list();
+            
+            System.out.println("results = " + results.size() + " : " + results.toString());
+            
             int resultado = results.size();
 
             if (log.isDebugEnabled()) {
                  log.debug("<<<<<<<<< Result size " + resultado);
-            }
-            
-            if (resultado == 0) {
-               return results;
             }
             
             return results;

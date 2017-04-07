@@ -129,11 +129,6 @@ public class ManejadorRecomendaciones {
             
             HibernateUtil.beginTransaction();
             
-//            Estado estadoByID = this.estadoDAO.buscarPorId(estado.getId(), true);
-//            
-//            estadoByID.setNombre(estado.getNombre());
-//            estadoByID.setDescripcion(estado.getDescripcion());
-            
             toReturn = this.dao.modificar( recomendacion );
 
             HibernateUtil.commitTransaction();

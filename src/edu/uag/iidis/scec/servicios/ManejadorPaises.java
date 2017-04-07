@@ -58,9 +58,7 @@ public class ManejadorPaises {
         } finally {
             HibernateUtil.closeSession();
         }
-
     }
-    
         
     public boolean modificarPais(Pais pais) {
         
@@ -75,11 +73,6 @@ public class ManejadorPaises {
         try {
             
             HibernateUtil.beginTransaction();
-            
-//            Estado estadoByID = this.estadoDAO.buscarPorId(estado.getId(), true);
-//            
-//            estadoByID.setNombre(estado.getNombre());
-//            estadoByID.setDescripcion(estado.getDescripcion());
             
             toReturn = this.dao.modificar( pais );
 
